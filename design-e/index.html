@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Epsilon Clinic — Concierge Medicine for Performance, Recovery & Longevity</title>
+  <meta name="description" content="Epsilon Clinic delivers concierge medicine for performance, recovery, and longevity. Personalized care, advanced therapies, and elevated membership." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">Epsilon Clinic</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav" id="main-nav">
+        <a href="#method">Our Method</a>
+        <a href="#therapies">Therapies</a>
+        <a href="#pricing">Membership</a>
+        <a href="#about">Physicians</a>
+        <a href="#faq">Guide</a>
+        <a href="#login" class="nav-login">Login</a>
+        <a href="#pricing" class="btn btn-brass nav-cta-mobile">Join Now</a>
+      </nav>
+      <a href="#pricing" class="btn btn-brass header-cta">Join Now</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-brand">
+      <div class="hero-atmosphere" aria-hidden="true"></div>
+      <div class="hero-dna-stage" id="hero-dna-stage" role="img" aria-label="A slowly rotating DNA sculpture representing personalized biology and longevity">
+        <canvas id="hero-dna" aria-hidden="true"></canvas>
+        <div class="dna-fallback" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-brand" id="hero-brand">Epsilon Clinic</p>
+        <h1>Medicine, refined for how you live.</h1>
+        <p class="hero-sub">
+          Physician-led concierge care for performance, recovery, and longevity—
+          designed around your biology, not a waiting room.
+        </p>
+        <div class="hero-actions">
+          <a href="#pricing" class="btn btn-ink">Join Now</a>
+          <a href="#method" class="btn btn-ghost">Explore the Method</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cities + press -->
+    <section class="presence" aria-label="Locations and press">
+      <div class="container presence-inner reveal">
+        <p class="presence-cities">New York · Miami · Los Angeles · Austin</p>
+        <p class="presence-press-label">As featured in</p>
+      </div>
+      <div class="press-ticker" aria-hidden="true">
+        <div class="press-ticker-track">
+          <span>Forbes</span>
+          <span>The Wall Street Journal</span>
+          <span>GQ</span>
+          <span>Vogue</span>
+          <span>Men’s Health</span>
+          <span>Business Insider</span>
+          <span>Forbes</span>
+          <span>The Wall Street Journal</span>
+          <span>GQ</span>
+          <span>Vogue</span>
+          <span>Men’s Health</span>
+          <span>Business Insider</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership -->
+    <section class="section section-stone" id="pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <header class="section-intro reveal">
+          <p class="eyebrow">Membership</p>
+          <h2 id="pricing-title">Two memberships.<br /><em>One standard of care.</em></h2>
+          <p class="section-lede">Choose the depth of access that matches your ambitions—both anchored by a dedicated physician and continuous optimization.</p>
+        </header>
+
+        <div class="membership reveal">
+          <article class="membership-tier">
+            <p class="tier-label">Essential</p>
+            <p class="tier-price">$449<span>/mo</span></p>
+            <ul class="tier-features">
+              <li>Dedicated concierge physician</li>
+              <li>Annual comprehensive labs &amp; consults</li>
+              <li>Priority same-week appointments</li>
+              <li>Recovery suite access (select hours)</li>
+              <li>Personalized health dashboard</li>
+              <li>24/7 messaging with care team</li>
+            </ul>
+            <a href="#join" class="btn btn-outline">Get Started</a>
+          </article>
+          <div class="membership-divider" aria-hidden="true"></div>
+          <article class="membership-tier membership-tier--premier">
+            <p class="tier-label">Premier</p>
+            <p class="tier-price">$849<span>/mo</span></p>
+            <ul class="tier-features">
+              <li>Everything in Essential</li>
+              <li>Unlimited recovery suite access</li>
+              <li>Quarterly advanced biomarker panels</li>
+              <li>IV therapy &amp; peptide protocols</li>
+              <li>Body composition &amp; VO₂ testing</li>
+              <li>Executive physical &amp; imaging package</li>
+              <li>Dedicated performance specialist</li>
+            </ul>
+            <a href="#join" class="btn btn-brass">Go Premier</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Method -->
+    <section class="section section-ink" id="method" aria-labelledby="method-title">
+      <div class="container method-layout">
+        <div class="method-copy reveal">
+          <p class="eyebrow eyebrow--light">Our Method</p>
+          <h2 id="method-title" class="light">A clinic built around prevention, optimization, and recovery.</h2>
+          <p>
+            Advanced diagnostics, physician interpretation, and therapies that restore capacity—
+            orchestrated as one continuous plan rather than disconnected appointments.
+          </p>
+        </div>
+        <div class="method-stage reveal" id="method-stage">
+          <div class="stage-viewport">
+            <div class="stage-track" id="stage-track">
+              <div class="stage-slide atmosphere atmosphere--lounge" role="img" aria-label="Recovery lounge atmosphere"></div>
+              <div class="stage-slide atmosphere atmosphere--suite" role="img" aria-label="Therapy suite atmosphere"></div>
+              <div class="stage-slide atmosphere atmosphere--lab" role="img" aria-label="Performance lab atmosphere"></div>
+            </div>
+          </div>
+          <div class="stage-controls">
+            <button type="button" id="stage-prev" aria-label="Previous image">‹</button>
+            <span class="stage-index" id="stage-index" aria-live="polite">01 / 03</span>
+            <button type="button" id="stage-next" aria-label="Next image">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Therapies carousel -->
+    <section class="therapies" id="therapies" aria-labelledby="therapies-title">
+      <div class="container">
+        <header class="therapies-heading reveal">
+          <div>
+            <p class="eyebrow">Therapies &amp; Equipment</p>
+            <h2 id="therapies-title">Advanced modalities,<br /><em>quietly exceptional.</em></h2>
+          </div>
+          <div class="therapies-side">
+            <p>Recovery and performance tools curated for measurable results—available as part of your membership experience.</p>
+            <div class="therapies-controls" aria-label="Therapy carousel controls">
+              <button type="button" id="therapies-prev" aria-label="Previous therapy">←</button>
+              <button type="button" id="therapies-next" aria-label="Next therapy">→</button>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <div class="therapies-track" id="therapies-track" tabindex="0" aria-label="Therapies and equipment">
+        <article class="therapy-panel">
+          <div class="therapy-visual atmosphere atmosphere--eq1" role="img" aria-label="Red light therapy"></div>
+          <div class="therapy-copy">
+            <span>01</span>
+            <h3>Red Light Therapy</h3>
+            <p>Cellular recovery and inflammation support through precise photobiomodulation.</p>
+          </div>
+        </article>
+        <article class="therapy-panel">
+          <div class="therapy-visual atmosphere atmosphere--eq2" role="img" aria-label="Infrared sauna"></div>
+          <div class="therapy-copy">
+            <span>02</span>
+            <h3>Infrared Sauna</h3>
+            <p>Deep heat for detoxification, circulation, and nervous system reset.</p>
+          </div>
+        </article>
+        <article class="therapy-panel">
+          <div class="therapy-visual atmosphere atmosphere--eq3" role="img" aria-label="Hyperbaric oxygen"></div>
+          <div class="therapy-copy">
+            <span>03</span>
+            <h3>Hyperbaric Oxygen</h3>
+            <p>Elevated oxygen delivery to accelerate healing and cognitive clarity.</p>
+          </div>
+        </article>
+        <article class="therapy-panel">
+          <div class="therapy-visual atmosphere atmosphere--eq4" role="img" aria-label="Cryotherapy"></div>
+          <div class="therapy-copy">
+            <span>04</span>
+            <h3>Cryotherapy</h3>
+            <p>Rapid cold exposure to reduce soreness and sharpen recovery windows.</p>
+          </div>
+        </article>
+        <article class="therapy-panel">
+          <div class="therapy-visual atmosphere atmosphere--eq5" role="img" aria-label="IV therapy and labs"></div>
+          <div class="therapy-copy">
+            <span>05</span>
+            <h3>IV Therapy &amp; Labs</h3>
+            <p>Targeted infusions paired with continuous biomarker insight.</p>
+          </div>
+        </article>
+        <article class="therapy-panel">
+          <div class="therapy-visual atmosphere atmosphere--eq6" role="img" aria-label="Compression therapy"></div>
+          <div class="therapy-copy">
+            <span>06</span>
+            <h3>Compression Therapy</h3>
+            <p>Pneumatic recovery to flush fatigue and restore mobility.</p>
+          </div>
+        </article>
+        <article class="therapy-panel">
+          <div class="therapy-visual atmosphere atmosphere--eq7" role="img" aria-label="Medical imaging"></div>
+          <div class="therapy-copy">
+            <span>07</span>
+            <h3>Medical Imaging</h3>
+            <p>Clarity beneath the surface—imaging interpreted in clinical context.</p>
+          </div>
+        </article>
+        <article class="therapy-panel">
+          <div class="therapy-visual atmosphere atmosphere--eq8" role="img" aria-label="Physical therapy and performance"></div>
+          <div class="therapy-copy">
+            <span>08</span>
+            <h3>PT &amp; Performance</h3>
+            <p>Movement, strength, and return-to-peak protocols with specialists.</p>
+          </div>
+        </article>
+      </div>
+      <div class="therapy-progress" aria-hidden="true"><i id="therapy-progress-bar"></i></div>
+    </section>
+
+    <!-- Care path -->
+    <section class="section section-ink" id="path" aria-labelledby="path-title">
+      <div class="container">
+        <header class="section-intro section-intro--light reveal">
+          <p class="eyebrow eyebrow--light">The Care Path</p>
+          <h2 id="path-title" class="light">A personalized approach to health, performance, and longevity.</h2>
+        </header>
+
+        <ol class="care-path">
+          <li class="care-step reveal">
+            <span class="care-num">01</span>
+            <div>
+              <h3>Baseline</h3>
+              <p>Establish a complete picture of your health with advanced labs, imaging, and physician assessment.</p>
+            </div>
+          </li>
+          <li class="care-step reveal">
+            <span class="care-num">02</span>
+            <div>
+              <h3>Assessment</h3>
+              <p>Interpret results in context—performance goals, lifestyle, and risk—to define your care roadmap.</p>
+            </div>
+          </li>
+          <li class="care-step reveal">
+            <span class="care-num">03</span>
+            <div>
+              <h3>Optimization</h3>
+              <p>Precision protocols spanning nutrition, hormones, sleep, and training for measurable gains.</p>
+            </div>
+          </li>
+          <li class="care-step reveal">
+            <span class="care-num">04</span>
+            <div>
+              <h3>Recovery</h3>
+              <p>Access world-class recovery modalities that accelerate healing and sustain peak output.</p>
+            </div>
+          </li>
+          <li class="care-step reveal">
+            <span class="care-num">05</span>
+            <div>
+              <h3>Longevity</h3>
+              <p>Continuous monitoring and iteration so you stay ahead of decline and extend healthspan.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Organizations -->
+    <section class="organizations" id="locations" aria-labelledby="org-title">
+      <div class="org-copy reveal">
+        <p class="eyebrow">Organizations</p>
+        <h2 id="org-title">Health is your foundation. Epsilon elevates it for your organization.</h2>
+        <p>
+          Partner with Epsilon Clinic for executive health programs, team performance packages,
+          and on-site wellness that deliver better outcomes and lasting engagement.
+        </p>
+        <a href="#contact" class="btn btn-ink">Contact Us</a>
+      </div>
+      <div class="org-visual atmosphere atmosphere--org" role="img" aria-label="Organization wellness atmosphere"></div>
+    </section>
+
+    <!-- Physicians -->
+    <section class="section section-stone" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section-intro reveal">
+          <p class="eyebrow">Physicians</p>
+          <h2 id="about-title">Built by physicians and health experts who expect more from medicine.</h2>
+        </header>
+
+        <div class="physicians">
+          <article class="physician reveal">
+            <div class="physician-portrait atmosphere atmosphere--team1" role="img" aria-label="Dr. Sarah Chen"></div>
+            <div class="physician-bio">
+              <h3>Dr. Sarah Chen, MD</h3>
+              <p class="physician-role">Chief Medical Officer</p>
+              <p>
+                Board-certified internist specializing in preventive medicine and sports performance.
+                Former medical director at leading academic longevity programs.
+              </p>
+            </div>
+          </article>
+          <article class="physician physician--offset reveal">
+            <div class="physician-portrait atmosphere atmosphere--team2" role="img" aria-label="Dr. Marcus Hale"></div>
+            <div class="physician-bio">
+              <h3>Dr. Marcus Hale, MD</h3>
+              <p class="physician-role">Director of Performance Medicine</p>
+              <p>
+                Dual-trained in orthopedics and regenerative medicine. Advises elite athletes
+                and executives on recovery protocols and musculoskeletal optimization.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ accordion -->
+    <section class="section section-sand" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <header class="section-intro reveal">
+          <p class="eyebrow">Guide</p>
+          <h2 id="faq-title">Questions, answered with clarity.</h2>
+          <p class="section-lede">Membership, care, and what to expect—without the noise.</p>
+        </header>
+
+        <div class="faq-list reveal">
+          <details class="faq-item" open>
+            <summary>What makes Epsilon different from traditional primary care?</summary>
+            <p>You receive dedicated physician access, advanced diagnostics, and recovery therapies in one continuous membership—not fragmented visits and referrals.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do Essential and Premier differ?</summary>
+            <p>Essential covers physician-led care, annual labs, and select recovery access. Premier expands to unlimited suite access, advanced biomarkers, IV and peptide protocols, and performance testing.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Where are you located?</summary>
+            <p>Flagship memberships are available in New York, Miami, Los Angeles, and Austin. Corporate and executive programs can be tailored across markets.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can my organization partner with Epsilon?</summary>
+            <p>Yes. We design executive health and team performance programs with measurable outcomes and concierge coordination for leadership teams.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I become a founding member?</summary>
+            <p>Founding memberships are limited at each location. Choose a plan above or contact us to reserve your place.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Voice / testimonials -->
+    <section class="section section-ink" id="testimonials" aria-labelledby="voice-title">
+      <div class="container voice reveal">
+        <p class="eyebrow eyebrow--light">Member Voice</p>
+        <h2 id="voice-title" class="light">Trusted by high-performance individuals.</h2>
+
+        <div class="voice-stage" id="voice-stage">
+          <blockquote class="voice-quote is-active" data-voice="0">
+            <p>“Epsilon transformed how I approach recovery. The physician access and recovery suite are unmatched—I feel sharper and recover faster than I have in years.”</p>
+            <footer>
+              <cite>James R.</cite>
+              <span>Founder &amp; CEO</span>
+            </footer>
+          </blockquote>
+          <blockquote class="voice-quote" data-voice="1">
+            <p>“Finally, medicine that treats me like an athlete and an executive. The Premier membership pays for itself in peace of mind and measurable biomarkers.”</p>
+            <footer>
+              <cite>Alicia M.</cite>
+              <span>Investment Partner</span>
+            </footer>
+          </blockquote>
+          <blockquote class="voice-quote" data-voice="2">
+            <p>“From baseline testing to ongoing optimization, every detail is thoughtfully designed. This is what healthcare should feel like.”</p>
+            <footer>
+              <cite>David K.</cite>
+              <span>Professional Athlete</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="voice-dots" role="tablist" aria-label="Testimonials">
+          <button type="button" class="voice-dot is-active" data-voice="0" aria-label="Show testimonial 1" aria-selected="true"></button>
+          <button type="button" class="voice-dot" data-voice="1" aria-label="Show testimonial 2" aria-selected="false"></button>
+          <button type="button" class="voice-dot" data-voice="2" aria-label="Show testimonial 3" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join -->
+    <section class="join" id="join" aria-labelledby="join-title">
+      <div class="join-copy reveal">
+        <h2 id="join-title">Become a Founding Member</h2>
+        <p>
+          Limited founding memberships are available at our flagship locations.
+          Secure your place in a new standard of care.
+        </p>
+        <a href="#pricing" class="btn btn-brass">Join Now</a>
+      </div>
+      <div class="join-visual atmosphere atmosphere--cta" role="img" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo logo-footer">Epsilon Clinic</a>
+        <p>Concierge medicine for performance, recovery, and longevity.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Memberships</h4>
+          <a href="#pricing">Essential</a>
+          <a href="#pricing">Premier</a>
+          <a href="#locations">Corporate</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#about">Our Team</a>
+          <a href="#locations">Locations</a>
+          <a href="#method">Our Method</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+          <a href="#login">Member Login</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">HIPAA Notice</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="social-links">
+        <a href="#" aria-label="Instagram" class="social-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="social-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <p class="copyright">&copy; 2026 Epsilon Clinic. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var header = document.getElementById('site-header');
+      var toggle = document.getElementById('nav-toggle');
+      var nav = document.getElementById('main-nav');
+
+      function closeNav() {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-active');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        document.body.classList.remove('nav-open');
+      }
+
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        toggle.classList.toggle('is-active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        document.body.classList.toggle('nav-open', open);
+      });
+
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeNav);
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeNav();
+      });
+
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('is-scrolled', window.scrollY > 24);
+      }, { passive: true });
+
+      /* Scroll reveals */
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !reduced) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      /* Method stage gallery */
+      var stageTrack = document.getElementById('stage-track');
+      var stagePrev = document.getElementById('stage-prev');
+      var stageNext = document.getElementById('stage-next');
+      var stageIndex = document.getElementById('stage-index');
+      var stagePos = 0;
+      var stageSlides = stageTrack ? stageTrack.children.length : 0;
+
+      function updateStage() {
+        if (!stageTrack) return;
+        stageTrack.style.transform = 'translateX(-' + (stagePos * 100) + '%)';
+        if (stageIndex) {
+          stageIndex.textContent = String(stagePos + 1).padStart(2, '0') + ' / ' + String(stageSlides).padStart(2, '0');
+        }
+      }
+
+      if (stagePrev && stageNext && stageSlides > 0) {
+        stagePrev.addEventListener('click', function () {
+          stagePos = (stagePos - 1 + stageSlides) % stageSlides;
+          updateStage();
+        });
+        stageNext.addEventListener('click', function () {
+          stagePos = (stagePos + 1) % stageSlides;
+          updateStage();
+        });
+      }
+
+      /* Therapies carousel */
+      var track = document.getElementById('therapies-track');
+      var progress = document.getElementById('therapy-progress-bar');
+      var therapiesPrev = document.getElementById('therapies-prev');
+      var therapiesNext = document.getElementById('therapies-next');
+
+      function updateTherapyProgress() {
+        if (!track || !progress) return;
+        var max = track.scrollWidth - track.clientWidth;
+        var ratio = max > 0 ? track.scrollLeft / max : 1;
+        progress.style.transform = 'scaleX(' + Math.max(0.1, ratio) + ')';
+        if (therapiesPrev) therapiesPrev.disabled = track.scrollLeft <= 2;
+        if (therapiesNext) therapiesNext.disabled = track.scrollLeft >= max - 2;
+      }
+
+      function therapyStep() {
+        if (!track) return 0;
+        var panel = track.querySelector('.therapy-panel');
+        var gap = parseFloat(window.getComputedStyle(track).columnGap) || 24;
+        return panel ? panel.getBoundingClientRect().width + gap : track.clientWidth * 0.75;
+      }
+
+      function scrollTherapies(direction) {
+        if (!track) return;
+        track.scrollBy({ left: direction * therapyStep(), behavior: reduced ? 'auto' : 'smooth' });
+      }
+
+      if (track) {
+        track.addEventListener('scroll', updateTherapyProgress, { passive: true });
+        window.addEventListener('resize', updateTherapyProgress);
+        if (therapiesPrev) therapiesPrev.addEventListener('click', function () { scrollTherapies(-1); });
+        if (therapiesNext) therapiesNext.addEventListener('click', function () { scrollTherapies(1); });
+
+        track.addEventListener('keydown', function (event) {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            scrollTherapies(event.key === 'ArrowLeft' ? -1 : 1);
+          }
+        });
+
+        var dragging = false;
+        var dragStartX = 0;
+        var dragStartScroll = 0;
+
+        track.addEventListener('pointerdown', function (event) {
+          if (event.pointerType === 'touch') return;
+          dragging = true;
+          dragStartX = event.clientX;
+          dragStartScroll = track.scrollLeft;
+          track.classList.add('is-dragging');
+          track.setPointerCapture(event.pointerId);
+        });
+
+        track.addEventListener('pointermove', function (event) {
+          if (!dragging) return;
+          track.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+        });
+
+        function stopDragging(event) {
+          if (!dragging) return;
+          dragging = false;
+          track.classList.remove('is-dragging');
+          if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+        }
+
+        track.addEventListener('pointerup', stopDragging);
+        track.addEventListener('pointercancel', stopDragging);
+        updateTherapyProgress();
+      }
+
+      /* Voice crossfade */
+      var quotes = document.querySelectorAll('.voice-quote');
+      var dots = document.querySelectorAll('.voice-dot');
+      var voicePos = 0;
+      var voiceTimer;
+
+      function showVoice(index) {
+        voicePos = index;
+        quotes.forEach(function (q, i) {
+          q.classList.toggle('is-active', i === index);
+        });
+        dots.forEach(function (d, i) {
+          d.classList.toggle('is-active', i === index);
+          d.setAttribute('aria-selected', i === index ? 'true' : 'false');
+        });
+      }
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          showVoice(Number(dot.getAttribute('data-voice')));
+          if (voiceTimer) {
+            clearInterval(voiceTimer);
+            startVoiceTimer();
+          }
+        });
+      });
+
+      function startVoiceTimer() {
+        if (reduced || quotes.length < 2) return;
+        voiceTimer = setInterval(function () {
+          showVoice((voicePos + 1) % quotes.length);
+        }, 6000);
+      }
+
+      startVoiceTimer();
+    })();
+  </script>
+  <script type="module" src="sculpture.js"></script>
+</body>
+</html>

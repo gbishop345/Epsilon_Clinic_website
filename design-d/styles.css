@@ -1707,3 +1707,389 @@ em {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   Design D — Sculpted Intelligence
+   ========================================================================== */
+
+.design-d {
+  --d-blue: #7ea9c2;
+  --d-blue-deep: #365f79;
+  --d-warm: #c2a67f;
+  --d-ink: #171c1c;
+}
+
+.design-d .hero {
+  background:
+    radial-gradient(ellipse at 18% 38%, rgba(194, 166, 127, 0.14), transparent 42%),
+    radial-gradient(ellipse at 72% 18%, rgba(79, 127, 158, 0.11), transparent 36%),
+    linear-gradient(90deg, transparent calc(50% - 1px), rgba(32, 36, 34, 0.035) 50%, transparent calc(50% + 1px)),
+    var(--limewash);
+}
+
+.hero-stage,
+.intelligence-stage {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(126, 169, 194, 0.14), transparent 34%),
+    radial-gradient(circle at 58% 55%, rgba(194, 166, 127, 0.16), transparent 42%),
+    linear-gradient(145deg, #202727, #111515);
+}
+
+.hero-stage canvas,
+.intelligence-stage canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.stage-fallback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: min(62%, 31rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(126, 169, 194, 0.25);
+  border-radius: 46% 54% 59% 41% / 45% 38% 62% 55%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255,255,255,0.34), transparent 18%),
+    linear-gradient(145deg, rgba(194, 166, 127, 0.8), rgba(69, 108, 130, 0.62));
+  box-shadow:
+    inset -2rem -2rem 5rem rgba(10,14,14,0.3),
+    0 2rem 6rem rgba(0,0,0,0.25);
+  transform: translate(-50%, -50%);
+  animation: fallback-float 9s ease-in-out infinite alternate;
+}
+
+.webgl-ready .stage-fallback {
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+
+.webgl-failed .stage-fallback {
+  opacity: 1;
+}
+
+@keyframes fallback-float {
+  from { transform: translate(-50%, -51%) rotate(-4deg); }
+  to { transform: translate(-50%, -47%) rotate(6deg); }
+}
+
+.stage-index {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  left: 1.5rem;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(251, 250, 247, 0.52);
+  font-family: var(--font-data);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+}
+
+.design-d .hero-stage {
+  border-color: rgba(194, 166, 127, 0.22);
+  box-shadow: 0 22px 70px rgba(23, 28, 28, 0.14);
+}
+
+.design-d .hero-stage::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.035), transparent 24%),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px) 0 0 / 5rem 100%;
+  content: "";
+}
+
+.design-d .diagnostic-card {
+  z-index: 5;
+  background: rgba(17, 22, 22, 0.68);
+  border-color: rgba(194, 166, 127, 0.25);
+  box-shadow: 0 18px 54px rgba(0,0,0,0.2);
+}
+
+.design-d .signal-lines i {
+  background: linear-gradient(var(--d-blue), var(--d-warm));
+}
+
+.design-d .system-strip {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(126,169,194,0.06), transparent 34%, rgba(194,166,127,0.06)),
+    var(--d-ink);
+}
+
+.design-d .system-strip::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18rem;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(126,169,194,0.08), transparent);
+  content: "";
+  animation: strip-scan 8s linear infinite;
+}
+
+@keyframes strip-scan {
+  from { left: -18rem; }
+  to { left: 100%; }
+}
+
+.intelligence {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.9fr) minmax(30rem, 1.1fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 85% 28%, rgba(126, 169, 194, 0.1), transparent 38%),
+    radial-gradient(ellipse at 8% 75%, rgba(194, 166, 127, 0.13), transparent 42%),
+    var(--warm-white);
+}
+
+.intelligence-copy {
+  max-width: 43rem;
+}
+
+.intelligence-copy h2 {
+  margin-bottom: 2rem;
+  font-size: clamp(3rem, 5.5vw, 6.6rem);
+}
+
+.intelligence-copy > p:not(.eyebrow) {
+  max-width: 36rem;
+  margin-bottom: 3rem;
+  color: rgba(32, 36, 34, 0.68);
+  line-height: 1.85;
+}
+
+.intelligence-points {
+  border-top: 1px solid var(--line);
+}
+
+.intelligence-points article {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 1rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.intelligence-points article > span {
+  padding-top: 0.15rem;
+  color: var(--accent);
+  font-family: var(--font-data);
+  font-size: 0.58rem;
+}
+
+.intelligence-points h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.025em;
+}
+
+.intelligence-points p {
+  margin: 0;
+  color: rgba(32,36,34,0.58);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.intelligence-stage {
+  position: relative;
+  min-height: clamp(34rem, 55vw, 48rem);
+  overflow: hidden;
+  border: 1px solid rgba(126, 169, 194, 0.2);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: 0 24px 80px rgba(23, 28, 28, 0.13);
+}
+
+.intelligence-stage::before {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px) 0 0 / 100% 5rem,
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px) 0 0 / 5rem 100%;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+  content: "";
+}
+
+.intelligence-hud {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  backdrop-filter: blur(16px);
+}
+
+.intelligence-hud div {
+  padding: 1rem;
+  background: rgba(16,21,21,0.62);
+}
+
+.intelligence-hud span,
+.intelligence-hud strong {
+  display: block;
+  font-family: var(--font-data);
+  font-size: 0.46rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.intelligence-hud span {
+  color: rgba(251,250,247,0.48);
+}
+
+.intelligence-hud strong {
+  margin-top: 0.45rem;
+  color: var(--d-blue);
+  font-size: 0.6rem;
+}
+
+.design-d .plan-card {
+  transition: transform 500ms var(--ease), box-shadow 500ms ease;
+}
+
+.design-d .plan-card:hover {
+  z-index: 2;
+  transform: translateY(-0.4rem);
+  box-shadow: 0 26px 70px rgba(23,28,28,0.13);
+}
+
+.design-d .space-card {
+  transition: transform 600ms var(--ease);
+}
+
+.design-d .space-card:hover {
+  transform: translateY(-0.3rem);
+}
+
+.design-d .space-visual {
+  background:
+    radial-gradient(circle at 64% 38%, rgba(126,169,194,0.12), transparent 30%),
+    linear-gradient(145deg, #343b3b, #202626);
+}
+
+.design-d .protocol-list li {
+  position: relative;
+  overflow: hidden;
+}
+
+.design-d .protocol-list li::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(var(--d-blue), var(--d-warm));
+  content: "";
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 400ms var(--ease);
+}
+
+.design-d .protocol-list li:hover::after {
+  transform: scaleY(1);
+}
+
+.design-d .reveal {
+  filter: blur(8px);
+  transform: translateY(2.5rem) scale(0.985);
+  transition: opacity 900ms var(--ease), transform 900ms var(--ease), filter 900ms ease;
+}
+
+.design-d .reveal.is-visible {
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
+
+@media (max-width: 1000px) {
+  .intelligence {
+    grid-template-columns: 1fr;
+  }
+
+  .intelligence-copy {
+    max-width: 50rem;
+  }
+
+  .intelligence-stage {
+    min-height: min(75vw, 42rem);
+  }
+}
+
+@media (max-width: 800px) {
+  .design-d .hero-stage {
+    min-height: 42rem;
+  }
+
+  .stage-index {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .intelligence {
+    gap: 3.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .design-d .hero-stage {
+    min-height: 34rem;
+  }
+
+  .intelligence-copy h2 {
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
+  }
+
+  .intelligence-stage {
+    min-height: 31rem;
+  }
+
+  .intelligence-hud {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .intelligence-hud div {
+    padding: 0.75rem 0.55rem;
+  }
+
+  .intelligence-hud span {
+    font-size: 0.39rem;
+  }
+
+  .intelligence-hud strong {
+    font-size: 0.49rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-d .reveal {
+    filter: none;
+    transform: none;
+  }
+
+  .stage-fallback {
+    animation: none;
+  }
+}
