@@ -533,20 +533,6 @@ h2 em {
   background: var(--line);
 }
 
-.hero-coordinate {
-  position: absolute;
-  z-index: 3;
-  top: 29%;
-  right: 18%;
-  display: flex;
-  gap: 1rem;
-  padding: 0.7rem 1rem;
-  border-radius: 999px;
-  color: var(--muted);
-  font-size: 0.58rem;
-  letter-spacing: 0.1em;
-}
-
 .scroll-cue {
   position: absolute;
   z-index: 3;
@@ -1695,7 +1681,6 @@ h2 em {
     width: auto;
   }
 
-  .hero-coordinate,
   .scroll-cue {
     display: none;
   }
