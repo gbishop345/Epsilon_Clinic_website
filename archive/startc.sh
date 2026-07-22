@@ -2,8 +2,8 @@
 set -e
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DIR="$ROOT/design-b"
-PORT=8081
+DIR="$ROOT/design-c"
+PORT=8082
 URL="http://localhost:${PORT}"
 
 cd "$DIR"
@@ -14,7 +14,7 @@ if pids=$(lsof -ti tcp:"$PORT" 2>/dev/null); then
   sleep 0.3
 fi
 
-echo "Starting Epsilon Health Design B at ${URL}"
+echo "Starting Epsilon Clinic Design C at ${URL}"
 python3 -m http.server "$PORT" &
 SERVER_PID=$!
 
@@ -30,5 +30,5 @@ trap cleanup INT TERM
 sleep 0.4
 open "$URL"
 
-echo "Server running (Design B). Press Ctrl+C to stop."
+echo "Server running (Design C). Press Ctrl+C to stop."
 wait "$SERVER_PID"

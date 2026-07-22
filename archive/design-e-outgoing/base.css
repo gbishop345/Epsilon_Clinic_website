@@ -10,8 +10,8 @@
   --warm: #b89a72;
   --warm-soft: #ebe4d8;
   --warm-hover: #c9ad86;
-  --sage: #41627a;
-  --sage-soft: #d8e4ec;
+  --sage: #657b6e;
+  --sage-soft: #dfe6df;
   --line: rgba(34, 39, 38, 0.12);
   --line-light: rgba(250, 249, 245, 0.16);
   --shadow-soft: 0 12px 40px rgba(34, 39, 38, 0.06);
@@ -380,19 +380,19 @@ em {
 .status-dot {
   width: 0.4rem;
   height: 0.4rem;
-  background: #6f9db8;
+  background: #80a08d;
   border-radius: 50%;
-  box-shadow: 0 0 0 5px rgba(111, 157, 184, 0.12);
+  box-shadow: 0 0 0 5px rgba(128, 160, 141, 0.12);
   animation: status-pulse 2.2s ease-in-out infinite;
 }
 
 @keyframes status-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 5px rgba(111, 157, 184, 0.12);
+    box-shadow: 0 0 0 5px rgba(128, 160, 141, 0.12);
   }
   50% {
-    box-shadow: 0 0 0 9px rgba(111, 157, 184, 0.22);
+    box-shadow: 0 0 0 9px rgba(128, 160, 141, 0.22);
   }
 }
 
@@ -699,7 +699,7 @@ em {
 /* DPC */
 .dpc {
   background:
-    radial-gradient(circle at 80% 30%, rgba(79, 127, 158, 0.12), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(101, 123, 110, 0.1), transparent 30%),
     var(--limewash);
 }
 
@@ -718,8 +718,8 @@ em {
   padding: clamp(2rem, 4.5vw, 4.5rem);
   color: var(--warm-white);
   background:
-    radial-gradient(circle at 80% 10%, rgba(174, 210, 230, 0.2), transparent 33%),
-    linear-gradient(145deg, var(--sage), #263f53 75%);
+    radial-gradient(circle at 80% 10%, rgba(142, 180, 202, 0.18), transparent 33%),
+    linear-gradient(145deg, var(--sage), #3d5046 75%);
   border-radius: var(--radius);
   box-shadow: var(--shadow-lift);
 }

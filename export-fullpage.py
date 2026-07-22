@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """
-Full-page website capture — one continuous high-res PNG per design
-(same format as a long-scroll design export).
+Full-page website capture — one continuous high-res PNG per active design.
+
+Starts local servers for designs A–I, captures, then stops them.
 """
 
 from __future__ import annotations
 
 import base64
 import io
+import signal
+import subprocess
 import time
+import urllib.request
 from pathlib import Path
 
 from PIL import Image
@@ -25,10 +29,71 @@ SCALE = 2
 # Chrome texture limit is ~16384px; stay under at device pixels
 MAX_DEVICE_PX = 15000
 
-PAGES = [
-    ("http://127.0.0.1:8080/", "Epsilon-Clinic-Design-A"),
-    ("http://127.0.0.1:8081/", "Epsilon-Clinic-Design-B"),
+DESIGNS = [
+    ("design-a", 8080, "Epsilon-Clinic-Design-A"),
+    ("design-b", 8081, "Epsilon-Clinic-Design-B"),
+    ("design-c", 8082, "Epsilon-Clinic-Design-C"),
+    ("design-d", 8083, "Epsilon-Clinic-Design-D"),
+    ("design-e", 8084, "Epsilon-Clinic-Design-E"),
+    ("design-f", 8085, "Epsilon-Clinic-Design-F"),
+    ("design-g", 8086, "Epsilon-Clinic-Design-G"),
+    ("design-h", 8087, "Epsilon-Clinic-Design-H"),
+    ("design-i", 8088, "Epsilon-Clinic-Design-I"),
 ]
+
+
+def wait_for_url(url: str, timeout: float = 15.0) -> None:
+    deadline = time.time() + timeout
+    last_err: Exception | None = None
+    while time.time() < deadline:
+        try:
+            with urllib.request.urlopen(url, timeout=1.5) as resp:
+                if resp.status == 200:
+                    return
+        except Exception as exc:  # noqa: BLE001
+            last_err = exc
+            time.sleep(0.2)
+    raise RuntimeError(f"Server not ready at {url}: {last_err}")
+
+
+def start_servers() -> list[subprocess.Popen]:
+    procs: list[subprocess.Popen] = []
+    for folder, port, _name in DESIGNS:
+        directory = ROOT / folder
+        proc = subprocess.Popen(
+            ["python3", "-m", "http.server", str(port), "--bind", "127.0.0.1"],
+            cwd=str(directory),
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            start_new_session=True,
+        )
+        procs.append(proc)
+        wait_for_url(f"http://127.0.0.1:{port}/")
+    return procs
+
+
+def stop_servers(procs: list[subprocess.Popen]) -> None:
+    for proc in procs:
+        try:
+            os_kill_group(proc)
+        except ProcessLookupError:
+            pass
+        try:
+            proc.wait(timeout=3)
+        except subprocess.TimeoutExpired:
+            os_kill_group(proc, force=True)
+            proc.wait(timeout=3)
+
+
+def os_kill_group(proc: subprocess.Popen, force: bool = False) -> None:
+    sig = signal.SIGKILL if force else signal.SIGTERM
+    try:
+        import os
+
+        os.killpg(proc.pid, sig)
+    except ProcessLookupError:
+        if proc.poll() is None:
+            proc.kill()
 
 
 def make_driver() -> webdriver.Chrome:
@@ -139,12 +204,16 @@ def main() -> None:
         if old.is_file():
             old.unlink()
 
-    driver = make_driver()
+    procs = start_servers()
+    driver = None
     try:
-        for url, name in PAGES:
-            capture_full_page(driver, url, name)
+        driver = make_driver()
+        for _folder, port, name in DESIGNS:
+            capture_full_page(driver, f"http://127.0.0.1:{port}/", name)
     finally:
-        driver.quit()
+        if driver is not None:
+            driver.quit()
+        stop_servers(procs)
 
 
 if __name__ == "__main__":

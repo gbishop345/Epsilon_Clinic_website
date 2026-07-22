@@ -3,239 +3,463 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Epsilon Clinic — Concierge Medicine</title>
-  <meta name="description" content="Epsilon Clinic. Concierge medicine for performance, recovery, and longevity." />
+  <meta name="description" content="Epsilon Health offers hospitality-led direct primary care, executive health, performance, recovery, and longevity services in Brentwood, Tennessee." />
+  <title>Epsilon Health — A Better Way to Care for Your Health</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header" id="site-header">
-    <a href="#" class="logo">Epsilon</a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <a class="logo" href="#" aria-label="Epsilon Health home">
+      <span class="logo-mark" aria-hidden="true">E</span>
+      <span>EPSILON <b>HEALTH</b></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
       <span></span><span></span>
     </button>
-    <nav class="main-nav" id="main-nav">
-      <a href="#membership">Membership</a>
-      <a href="#suites">Suites</a>
-      <a href="#method">Method</a>
-      <a href="#physicians">Physicians</a>
-      <a href="#join" class="nav-join">Join</a>
+    <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+      <a href="#dpc">Primary care</a>
+      <a href="#premium">Premium</a>
+      <a href="#services">Services</a>
+      <a href="#facility">Facility</a>
     </nav>
+    <a class="header-cta" href="#inquiry">Request information <span aria-hidden="true">↗</span></a>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-plane placeholder-img placeholder-hero" aria-hidden="true"></div>
-      <div class="hero-veil"></div>
-      <div class="hero-content">
-        <p class="brand">Epsilon</p>
-        <p class="hero-line">Concierge medicine for performance, recovery, and longevity.</p>
-        <a href="#membership" class="btn btn-champagne">Begin membership</a>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker"><span>Brentwood, Tennessee</span><span>01 / 06</span></p>
+        <h1 id="hero-title">Healthcare,<br /><em>without the friction.</em></h1>
+        <p class="hero-lede">A spectrum of physician-led care—from direct primary care delivered with hospitality to advanced programs for healthspan, recovery, and life performance.</p>
+        <div class="hero-careline" aria-hidden="true">
+          <div class="careline-track"><i></i><span></span><span></span><span></span><span></span></div>
+          <p><strong>One place. A lifetime of care.</strong><small>Access · Prevention · Performance</small></p>
+        </div>
+        <div class="hero-actions">
+          <a class="button button--dark" href="#dpc">Explore your options</a>
+          <a class="text-link" href="#mission">Our mission <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="hero-location">Opening in our new Brentwood facility</p>
       </div>
-      <p class="hero-meta">New York · Miami · Los Angeles · Austin</p>
-    </section>
 
-    <!-- Statement -->
-    <section class="statement" id="statement">
-      <p class="statement-text reveal">
-        Care built for those who refuse to leave health to chance—
-        prevention, optimization, and recovery as one continuous practice.
-      </p>
-      <p class="press-line reveal">As noted in Forbes, WSJ, GQ, and Vogue</p>
-    </section>
+      <div class="hero-visual image-placeholder" role="img" aria-label="Placeholder for exterior or reception photography of the Epsilon Health clinic">
+        <div class="placeholder-label">
+          <span>CLINIC IMAGE</span>
+          <small>Exterior or reception photography</small>
+        </div>
+        <div class="hero-note" aria-hidden="true">
+          <span class="status-dot"></span>
+          <span>A NEW STANDARD OF ACCESS</span>
+          <strong>Care built around<br />your time and goals.</strong>
+          <div class="signal-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
 
-    <!-- Membership — typographic compare -->
-    <section class="membership" id="membership">
-      <header class="section-intro">
-        <p class="eyebrow">Membership</p>
-        <h2>Two paths. One standard of care.</h2>
-      </header>
-      <div class="compare">
-        <article class="plan">
-          <h3>Essential</h3>
-          <p class="price">$449<span>/month</span></p>
-          <ul>
-            <li>Dedicated concierge physician</li>
-            <li>Annual labs and consults</li>
-            <li>Priority scheduling</li>
-            <li>Select recovery suite hours</li>
-            <li>Direct messaging with your care team</li>
-          </ul>
-          <a href="#" class="text-link">Request Essential</a>
-        </article>
-        <div class="compare-rule" aria-hidden="true"></div>
-        <article class="plan plan--premier">
-          <h3>Premier</h3>
-          <p class="price">$849<span>/month</span></p>
-          <ul>
-            <li>Everything in Essential</li>
-            <li>Unlimited recovery suite access</li>
-            <li>Quarterly biomarker panels</li>
-            <li>IV and performance protocols</li>
-            <li>Executive imaging package</li>
-            <li>Dedicated performance specialist</li>
-          </ul>
-          <a href="#" class="btn btn-champagne">Request Premier</a>
-        </article>
+      <div class="hero-proof">
+        <p>Our spectrum of care</p>
+        <div><span>PRIMARY CARE</span><span>LONGEVITY</span><span>PERFORMANCE</span><span>RECOVERY</span></div>
       </div>
     </section>
 
-    <!-- Suites — full-bleed chapters -->
-    <section class="suites" id="suites">
-      <header class="suites-intro">
-        <p class="eyebrow eyebrow-light">The suites</p>
-        <h2>Spaces designed for recovery at the highest level.</h2>
-      </header>
-
-      <article class="suite">
-        <div class="suite-visual placeholder-img placeholder-suite-1" aria-hidden="true"></div>
-        <div class="suite-caption reveal">
-          <h3>Red Light Therapy</h3>
-          <p>Cellular recovery in controlled spectral light.</p>
-        </div>
-      </article>
-      <article class="suite">
-        <div class="suite-visual placeholder-img placeholder-suite-2" aria-hidden="true"></div>
-        <div class="suite-caption reveal">
-          <h3>Infrared Sauna</h3>
-          <p>Deep heat for circulation, calm, and recovery.</p>
-        </div>
-      </article>
-      <article class="suite">
-        <div class="suite-visual placeholder-img placeholder-suite-3" aria-hidden="true"></div>
-        <div class="suite-caption reveal">
-          <h3>Hyperbaric Oxygen</h3>
-          <p>Pressurized oxygen for accelerated repair.</p>
-        </div>
-      </article>
-      <article class="suite">
-        <div class="suite-visual placeholder-img placeholder-suite-4" aria-hidden="true"></div>
-        <div class="suite-caption reveal">
-          <h3>Cryotherapy</h3>
-          <p>Whole-body cold exposure for inflammation and focus.</p>
-        </div>
-      </article>
-      <article class="suite">
-        <div class="suite-visual placeholder-img placeholder-suite-5" aria-hidden="true"></div>
-        <div class="suite-caption reveal">
-          <h3>IV Therapy &amp; Labs</h3>
-          <p>Precision infusions guided by your biomarkers.</p>
-        </div>
-      </article>
-      <article class="suite">
-        <div class="suite-visual placeholder-img placeholder-suite-6" aria-hidden="true"></div>
-        <div class="suite-caption reveal">
-          <h3>Medical Imaging</h3>
-          <p>Advanced diagnostics without the institutional wait.</p>
-        </div>
-      </article>
+    <section class="mission-strip" id="mission" aria-labelledby="mission-title">
+      <p class="eyebrow">Our mission</p>
+      <div>
+        <h2 id="mission-title">Medicine with the standards of hospitality.</h2>
+        <p>We remove the delays, frustration, and unnecessary complexity of obtaining excellent medical care—then extend that foundation into advanced health optimization for clients who want to invest in how well they live.</p>
+      </div>
     </section>
 
-    <!-- Method — horizontal scroll-snap -->
-    <section class="method" id="method">
-      <header class="method-intro">
-        <p class="eyebrow">The method</p>
-        <h2>Five movements. Continuous refinement.</h2>
-        <div class="method-controls">
-          <p class="method-hint">Scroll sideways</p>
-          <div class="method-arrows">
-            <button type="button" class="method-arrow" id="method-prev" aria-label="Previous step">←</button>
-            <button type="button" class="method-arrow" id="method-next" aria-label="Next step">→</button>
+    <section class="dpc section" id="dpc" aria-labelledby="dpc-title">
+      <header class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Direct primary care / 001</p>
+          <h2 id="dpc-title">Primary care that<br /><em>actually feels personal.</em></h2>
+        </div>
+        <p>Epsilon DPC is healthcare redesigned around you: quick, efficient medical care with direct communication, simpler scheduling, and timely follow-up.</p>
+      </header>
+
+      <div class="dpc-layout">
+        <article class="dpc-card reveal">
+          <div class="plan-top">
+            <p class="plan-code">EPS / DPC</p>
+            <span class="live-label"><i></i> Foundational care</span>
+          </div>
+          <h3>Epsilon DPC</h3>
+          <p class="price">$149 <span>/ month</span></p>
+          <p class="plan-intro">A cost-effective way to access primary and urgent care, particularly for patients with high-deductible or catastrophic insurance plans.</p>
+          <ul class="feature-grid">
+            <li>Annual wellness exam</li>
+            <li>Virtual visits</li>
+            <li>Direct provider messaging</li>
+            <li>Urgent care and sick visits</li>
+            <li>Chronic disease management</li>
+            <li>Basic labs</li>
+            <li>Preventive screening coordination</li>
+            <li>Imaging and complex lab discounts</li>
+            <li>Prompt NP and PA access</li>
+          </ul>
+          <div class="dpc-card-bottom">
+            <a class="button button--light" href="#inquiry">Ask about membership</a>
+            <p>Non-member appointments <strong>$199</strong></p>
+          </div>
+        </article>
+
+        <div class="dpc-side">
+          <div class="dpc-visual image-placeholder reveal" role="img" aria-label="Placeholder for Epsilon app or direct primary care photography">
+            <div class="placeholder-label"><span>CLINIC OR APP IMAGE</span><small>Direct care experience</small></div>
+          </div>
+          <div class="app-copy reveal">
+            <p class="eyebrow">Connected care</p>
+            <h3>Less waiting. More answers.</h3>
+            <p>Our app is designed to make it easy to communicate with providers, schedule appointments, receive imaging and laboratory follow-up, and request prescription services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="premium" id="premium" aria-labelledby="premium-title">
+      <header class="premium-heading reveal">
+        <p class="eyebrow eyebrow--light">Epsilon Premium / 002</p>
+        <h2 id="premium-title">Invest in how well<br /><em>you live.</em></h2>
+        <p>Comprehensive, physician-led programs for clients pursuing the highest level of health optimization in a luxurious boutique setting.</p>
+      </header>
+
+      <div class="outcomes" aria-label="Premium program goals">
+        <span>Live longer</span><span>Recover faster</span><span>Perform higher</span><span>Think clearer</span><span>Feel younger</span>
+      </div>
+
+      <div class="flagship-grid">
+        <article class="flagship-card reveal">
+          <p class="plan-code">FLAGSHIP / 01</p>
+          <h3>Longevity &amp;<br />Anti-Aging</h3>
+          <p class="flagship-price">$6,000 <span>/ year</span></p>
+          <p>Assess biological age, chronic disease and cancer risk, VO₂ max, function, and cardiac health—then build a precise plan to extend healthspan.</p>
+          <p class="price-note">Testing, imaging, pharmaceuticals, and supplements priced separately.</p>
+          <a class="card-link" href="#program-longevity">View program details <span>↓</span></a>
+        </article>
+
+        <article class="flagship-card flagship-card--featured reveal">
+          <p class="plan-code">FLAGSHIP / 02</p>
+          <h3>Executive Health<br />Assessment</h3>
+          <p class="flagship-price">$12,000</p>
+          <p>A highly efficient, customized executive physical with advanced laboratory testing, imaging, physician evaluation, and an actionable health plan.</p>
+          <ul class="add-on-list">
+            <li><span>Whole-body MRI</span><strong>$6,000</strong></li>
+            <li><span>Microbiome assessment</span><strong>$3,000</strong></li>
+            <li><span>Cardiac CT angiogram</span><strong>$3,000</strong></li>
+          </ul>
+          <a class="card-link" href="#program-executive">View assessment details <span>↓</span></a>
+        </article>
+
+        <article class="flagship-card reveal">
+          <p class="plan-code">FLAGSHIP / 03</p>
+          <h3>Concierge Medical<br />Services</h3>
+          <p class="flagship-price">$499 <span>/ month</span></p>
+          <p>Direct physician access for travel and specialist coordination, advanced labs, wearable review, body composition, cardiovascular risk, hormones, and coaching.</p>
+          <p class="price-note">Begins with a comprehensive health assessment. Testing priced separately.</p>
+          <a class="card-link" href="#program-concierge">View service details <span>↓</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="services section" id="services" aria-labelledby="services-title">
+      <header class="section-heading reveal">
+        <div>
+          <p class="eyebrow">À la carte / 003</p>
+          <h2 id="services-title">Targeted care,<br />when you need it.</h2>
+        </div>
+        <p>Comprehensive-program members receive priority and discounted access. Services without finalized pricing are available by consultation.</p>
+      </header>
+
+      <div class="service-categories">
+        <article class="service-category reveal">
+          <p class="category-code">01 / Physician programs</p>
+          <ul>
+            <li>Health appointment with a physician</li>
+            <li>Peptide clinic</li>
+            <li>Men’s health</li>
+            <li>Women’s health</li>
+            <li>Epsilon pharmacy services</li>
+          </ul>
+        </article>
+        <article class="service-category reveal">
+          <p class="category-code">02 / Performance &amp; recovery</p>
+          <ul>
+            <li>Healing and recovery package</li>
+            <li>Performance optimization</li>
+            <li>Joint preservation program</li>
+            <li>VO₂ max assessment</li>
+            <li>Ketamine therapy</li>
+          </ul>
+        </article>
+        <article class="service-category reveal">
+          <p class="category-code">03 / Prevention &amp; diagnostics</p>
+          <ul>
+            <li>Microbiome management</li>
+            <li>Weight loss programs</li>
+            <li>Cancer screening and prevention</li>
+            <li>Mitochondrial health program</li>
+            <li>Whole-body MRI and advanced imaging</li>
+          </ul>
+        </article>
+        <article class="service-category reveal">
+          <p class="category-code">04 / Advanced therapies</p>
+          <ul>
+            <li>Therapeutic plasma exchange</li>
+            <li>IV infusion services</li>
+            <li>PRP, stem cells, exosomes, and biologics</li>
+            <li>Hyperbaric oxygen therapy</li>
+            <li>Red light therapy</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="program-library" id="programs" aria-labelledby="programs-title">
+      <header class="library-heading reveal">
+        <p class="eyebrow eyebrow--light">Program library / 004</p>
+        <h2 id="programs-title">Explore the<br /><em>details.</em></h2>
+        <p>Open a program to learn how Epsilon approaches assessment, intervention, and ongoing care.</p>
+      </header>
+
+      <div class="disclosure-list">
+        <details class="program-detail reveal" id="program-executive">
+          <summary><span>01</span><strong>Executive Health Assessment</strong><small>$12,000</small></summary>
+          <div class="detail-body">
+            <p>Our ultimate executive physical expands or contracts around your age, health status, and priorities while minimizing the time required to complete it.</p>
+            <ul>
+              <li>Pre-assessment interview and customized testing plan</li>
+              <li>Advanced labs and optional microbiome, hormone, and cancer screening panels</li>
+              <li>Whole-body MRI, cardiac CT angiography, echocardiography, and DEXA access</li>
+              <li>VO₂ max and body-composition assessment</li>
+              <li>Comprehensive physician examination and results review</li>
+              <li>Personalized action plan with longitudinal prompts</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program-detail reveal" id="program-concierge">
+          <summary><span>02</span><strong>Concierge Medical Services</strong><small>$499 / month</small></summary>
+          <div class="detail-body">
+            <p>Concierge care begins with a comprehensive health assessment and adds direct physician access across your ongoing healthcare needs.</p>
+            <ul>
+              <li>Travel and specialist coordination</li>
+              <li>Advanced laboratory, metabolic, and cardiovascular-risk review</li>
+              <li>Wearable and body-composition tracking</li>
+              <li>Hormone and metabolic optimization</li>
+              <li>Longitudinal health analysis and health coaching</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program-detail reveal" id="program-longevity">
+          <summary><span>03</span><strong>Longevity, Epigenetics &amp; Rejuvenation</strong><small>$6,000 / year</small></summary>
+          <div class="detail-body">
+            <p>Epsilon combines evidence-based interventions with emerging research to measure biological age, identify modifiable risk, and build a targeted healthspan plan.</p>
+            <ul>
+              <li>Epigenetic-age and biomarker testing options</li>
+              <li>Cardiac, cancer-risk, VO₂ max, and functional assessment</li>
+              <li>Individualized nutrition, exercise, and recovery recommendations</li>
+              <li>Physician-guided review of senolytics, metabolic therapies, and supplements when appropriate</li>
+              <li>Longitudinal progress mapping and proactive guidance</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program-detail reveal">
+          <summary><span>04</span><strong>Healing &amp; Recovery</strong><small>Contact for pricing</small></summary>
+          <div class="detail-body">
+            <p>A coordinated recovery plan for injury, surgery, hard training, and occupational fatigue. Programs may combine diagnostics, rehabilitation guidance, and advanced recovery modalities based on physician assessment.</p>
+            <ul>
+              <li>Red light and hyperbaric oxygen therapy</li>
+              <li>Biologics, including PRP and other options when appropriate</li>
+              <li>IV support and recovery-focused protocols</li>
+              <li>Progress assessment and return-to-performance planning</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program-detail reveal">
+          <summary><span>05</span><strong>Microbiome &amp; Gut Health</strong><small>Contact for pricing</small></summary>
+          <div class="detail-body">
+            <p>Comprehensive assessment of the gut ecosystem and its relationship to metabolism, inflammation, immune function, and overall health.</p>
+            <ul>
+              <li>Advanced stool and microbiome testing options</li>
+              <li>Dietary, prebiotic, probiotic, and lifestyle recommendations</li>
+              <li>Physician interpretation in the context of symptoms and health goals</li>
+              <li>Follow-up testing and longitudinal adjustment where appropriate</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program-detail reveal">
+          <summary><span>06</span><strong>Performance Optimization</strong><small>Contact for pricing</small></summary>
+          <div class="detail-body">
+            <p>Measure the systems that drive physical and cognitive performance, then translate the data into practical interventions.</p>
+            <ul>
+              <li>VO₂ max, DEXA body composition, movement, and recovery assessment</li>
+              <li>Sleep, nutrition, hormone, and metabolic review</li>
+              <li>Individualized training and recovery recommendations</li>
+              <li>Longitudinal tracking against performance goals</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program-detail reveal">
+          <summary><span>07</span><strong>Joint Preservation</strong><small>Contact for pricing</small></summary>
+          <div class="detail-body">
+            <p>A physician-led strategy to protect mobility, manage pain, and preserve joint function with diagnostics, rehabilitation, and advanced treatment options.</p>
+            <ul>
+              <li>Clinical evaluation and imaging coordination</li>
+              <li>Strength, movement, and body-composition planning</li>
+              <li>PRP, PRF, stem-cell, exosome, and other biologic options when appropriate</li>
+              <li>Recovery modalities and ongoing progress review</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program-detail reveal">
+          <summary><span>08</span><strong>Weight &amp; Metabolic Health</strong><small>Programs vary</small></summary>
+          <div class="detail-body">
+            <p>Individualized metabolic care focused on sustainable weight loss, muscle preservation, body composition, and long-term health—not pounds alone.</p>
+            <ul>
+              <li>Medication and non-medication pathways based on clinical need</li>
+              <li>GLP-1/GIP and other pharmacotherapy options when appropriate</li>
+              <li>DEXA measurement of fat mass, lean mass, visceral fat, and bone density</li>
+              <li>Nutrition, exercise, and maintenance planning</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program-detail reveal">
+          <summary><span>09</span><strong>Cancer Prevention &amp; Risk Reduction</strong><small>From $500 consultation</small></summary>
+          <div class="detail-body">
+            <p>Personalized screening and prevention built around genetics, family history, lifestyle, metabolism, vaccines, exposures, age, and long-term risk.</p>
+            <blockquote>Prevent what we can. Detect what we cannot. Personalize the rest.</blockquote>
+            <p>Recommendations may include conventional screening, advanced imaging, genetic assessment, and emerging blood-based testing when clinically appropriate.</p>
+          </div>
+        </details>
+
+        <details class="program-detail reveal">
+          <summary><span>10</span><strong>Mitochondrial Health</strong><small>Contact for pricing</small></summary>
+          <div class="detail-body">
+            <p>A structured approach to the cellular systems that support energy, cognition, immune function, athletic performance, and healthy aging.</p>
+            <ul>
+              <li>Exercise programming designed to improve mitochondrial density and function</li>
+              <li>Nutrition, sleep, fasting, cold-exposure, and supplement guidance</li>
+              <li>Physician-guided pharmacotherapy review when appropriate</li>
+              <li>Optional biomarkers to monitor response over time</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="facility section" id="facility" aria-labelledby="facility-title">
+      <header class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Our facility / 005</p>
+          <h2 id="facility-title">Advanced care in a<br /><em>calmer environment.</em></h2>
+        </div>
+        <div class="facility-intro-side">
+          <p>Purpose-built spaces for measurement, treatment, and recovery—designed to feel private, comfortable, and considered.</p>
+          <div class="facility-controls" aria-label="Facility space controls">
+            <button id="facility-prev" type="button" aria-label="Previous facility space">←</button>
+            <button id="facility-next" type="button" aria-label="Next facility space">→</button>
           </div>
         </div>
       </header>
-      <div class="method-track" id="method-track">
-        <article class="method-step">
-          <span class="step-num">01</span>
-          <h3>Baseline</h3>
-          <p>A complete clinical portrait—labs, imaging, and physician assessment.</p>
+
+      <div class="facility-track" id="facility-track" tabindex="0" aria-label="Epsilon facility spaces">
+        <article class="facility-card">
+          <div class="facility-visual image-placeholder" role="img" aria-label="Placeholder for VO2 max assessment area photography">
+            <div class="placeholder-label"><span>CLINIC IMAGE</span><small>VO₂ max assessment area</small></div>
+          </div>
+          <div class="facility-copy"><span>01</span><h3>VO₂ Max</h3><p>A modern, mask-mounted system designed for accurate, comfortable, and repeatable assessment.</p></div>
         </article>
-        <article class="method-step">
-          <span class="step-num">02</span>
-          <h3>Assessment</h3>
-          <p>Results interpreted against your goals, risk, and performance demands.</p>
+        <article class="facility-card">
+          <div class="facility-visual image-placeholder" role="img" aria-label="Placeholder for private infusion room photography">
+            <div class="placeholder-label"><span>CLINIC IMAGE</span><small>Private infusion rooms</small></div>
+          </div>
+          <div class="facility-copy"><span>02</span><h3>Infusion Rooms</h3><p>Three calming rooms for IV therapies, therapeutic plasma exchange, and ketamine infusion.</p></div>
         </article>
-        <article class="method-step">
-          <span class="step-num">03</span>
-          <h3>Optimization</h3>
-          <p>Protocols across nutrition, hormones, sleep, and training.</p>
+        <article class="facility-card">
+          <div class="facility-visual image-placeholder" role="img" aria-label="Placeholder for red light therapy equipment photography">
+            <div class="placeholder-label"><span>CLINIC IMAGE</span><small>Red light therapy</small></div>
+          </div>
+          <div class="facility-copy"><span>03</span><h3>Red Light Therapy</h3><p>High-quality photobiomodulation equipment selected for intensity and clinically relevant wavelengths.</p></div>
         </article>
-        <article class="method-step">
-          <span class="step-num">04</span>
-          <h3>Recovery</h3>
-          <p>Modalities that restore capacity and sustain output.</p>
+        <article class="facility-card">
+          <div class="facility-visual image-placeholder" role="img" aria-label="Placeholder for hyperbaric oxygen chambers photography">
+            <div class="placeholder-label"><span>CLINIC IMAGE</span><small>Hyperbaric oxygen chambers</small></div>
+          </div>
+          <div class="facility-copy"><span>04</span><h3>Hyperbaric Oxygen</h3><p>Comfortable 2.0 ATM chambers focused on quality, pressure, safety, and patient comfort. Sessions from $250.</p></div>
         </article>
-        <article class="method-step">
-          <span class="step-num">05</span>
-          <h3>Longevity</h3>
-          <p>Ongoing monitoring so healthspan stays ahead of decline.</p>
+        <article class="facility-card">
+          <div class="facility-visual image-placeholder" role="img" aria-label="Placeholder for biologics laboratory photography">
+            <div class="placeholder-label"><span>CLINIC IMAGE</span><small>Biologics laboratory</small></div>
+          </div>
+          <div class="facility-copy"><span>05</span><h3>Biologics Lab</h3><p>On-site infrastructure for preparing PRP, PRF, stem-cell, exosome, and other biologic treatments.</p></div>
         </article>
       </div>
-      <div class="method-progress" aria-hidden="true">
-        <div class="method-progress-bar" id="method-progress-bar"></div>
+      <div class="facility-progress" aria-hidden="true"><i id="facility-progress-bar"></i></div>
+    </section>
+
+    <section class="inquiry" id="inquiry" aria-labelledby="inquiry-title">
+      <div class="inquiry-grid" aria-hidden="true"></div>
+      <div class="inquiry-copy reveal">
+        <p class="eyebrow eyebrow--light">Start a conversation / 006</p>
+        <h2 id="inquiry-title">Find the right level<br />of care for you.</h2>
+        <p>Tell us what you are looking for. Our team can help you understand membership, program, and service options at our Brentwood facility.</p>
+        <div class="inquiry-meta">
+          <span>Brentwood, Tennessee</span>
+          <span>Direct primary care</span>
+          <span>Premium programs</span>
+        </div>
       </div>
-    </section>
-
-    <!-- Physicians -->
-    <section class="physicians" id="physicians">
-      <header class="section-intro section-intro--dark">
-        <p class="eyebrow eyebrow-light">Physicians</p>
-        <h2>Led by clinicians who treat care as craft.</h2>
-      </header>
-      <article class="physician">
-        <div class="physician-photo placeholder-img placeholder-doc-1" aria-hidden="true"></div>
-        <div class="physician-copy">
-          <h3>Dr. Sarah Chen</h3>
-          <p class="role">Chief Medical Officer</p>
-          <p>Board-certified internist. Preventive medicine and sports performance. Formerly directed longevity programs at leading academic centers.</p>
+      <form class="inquiry-form reveal" id="inquiry-form">
+        <div class="field-row">
+          <label>First name<input type="text" name="first-name" autocomplete="given-name" /></label>
+          <label>Last name<input type="text" name="last-name" autocomplete="family-name" /></label>
         </div>
-      </article>
-      <article class="physician">
-        <div class="physician-photo placeholder-img placeholder-doc-2" aria-hidden="true"></div>
-        <div class="physician-copy">
-          <h3>Dr. Marcus Hale</h3>
-          <p class="role">Director of Performance Medicine</p>
-          <p>Orthopedics and regenerative medicine. Advises athletes and executives on recovery and musculoskeletal optimization.</p>
-        </div>
-      </article>
-    </section>
-
-    <!-- Close -->
-    <section class="closing" id="join">
-      <p class="closing-brand">Epsilon</p>
-      <h2>Become a founding member.</h2>
-      <p class="closing-lede">Limited memberships at our flagship locations.</p>
-      <a href="#membership" class="btn btn-dark">Join</a>
+        <label>Email address<input type="email" name="email" autocomplete="email" /></label>
+        <label>
+          I’m interested in
+          <select name="interest">
+            <option value="">Select an option</option>
+            <option>Direct Primary Care</option>
+            <option>Longevity &amp; Anti-Aging</option>
+            <option>Executive Health Assessment</option>
+            <option>Concierge Medical Services</option>
+            <option>À-la-carte service</option>
+          </select>
+        </label>
+        <label>How can we help?<textarea name="message" rows="4"></textarea></label>
+        <button class="button button--warm" type="button" disabled>Send inquiry</button>
+        <p class="form-note">Online inquiry submission will be connected in a future phase.</p>
+      </form>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-top">
-      <a href="#" class="logo logo-footer">Epsilon</a>
-      <div class="footer-cols">
-        <div>
-          <h4>Membership</h4>
-          <a href="#membership">Essential</a>
-          <a href="#membership">Premier</a>
-        </div>
-        <div>
-          <h4>Clinic</h4>
-          <a href="#suites">Suites</a>
-          <a href="#method">Method</a>
-          <a href="#physicians">Physicians</a>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">HIPAA</a>
-        </div>
-      </div>
+    <div class="footer-brand">
+      <a class="logo logo--footer" href="#">
+        <span class="logo-mark" aria-hidden="true">E</span>
+        <span>EPSILON <b>HEALTH</b></span>
+      </a>
+      <p>Hospitality-led medical care for access, prevention, performance, recovery, and longevity.</p>
     </div>
-    <p class="copyright">&copy; 2026 Epsilon Clinic</p>
+    <div class="footer-links">
+      <div><h3>Care</h3><a href="#dpc">Direct primary care</a><a href="#premium">Premium programs</a><a href="#services">À-la-carte services</a></div>
+      <div><h3>Explore</h3><a href="#programs">Program details</a><a href="#facility">Our facility</a><a href="#inquiry">Request information</a></div>
+      <div><h3>Location</h3><span>Brentwood, Tennessee</span><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Epsilon Health</span><span>A better way to care for your health.</span></div>
   </footer>
 
   <script>
@@ -243,100 +467,87 @@
       var header = document.getElementById('site-header');
       var toggle = document.getElementById('nav-toggle');
       var nav = document.getElementById('main-nav');
+      var track = document.getElementById('facility-track');
+      var progress = document.getElementById('facility-progress-bar');
+      var previous = document.getElementById('facility-prev');
+      var next = document.getElementById('facility-next');
+
+      function closeNav() {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-active');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        document.body.classList.remove('nav-open');
+      }
 
       toggle.addEventListener('click', function () {
         var open = nav.classList.toggle('is-open');
         toggle.classList.toggle('is-active', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
         document.body.classList.toggle('nav-open', open);
       });
 
       nav.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          nav.classList.remove('is-open');
-          toggle.classList.remove('is-active');
-          toggle.setAttribute('aria-expanded', 'false');
-          document.body.classList.remove('nav-open');
-        });
+        link.addEventListener('click', closeNav);
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeNav();
       });
 
       window.addEventListener('scroll', function () {
-        header.classList.toggle('is-scrolled', window.scrollY > 40);
+        header.classList.toggle('is-scrolled', window.scrollY > 24);
       }, { passive: true });
 
       var reveals = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var observer = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              entry.target.classList.add('is-in');
-              io.unobserve(entry.target);
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.2 });
-        reveals.forEach(function (el) { io.observe(el); });
+        }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+        reveals.forEach(function (element) { observer.observe(element); });
       } else {
-        reveals.forEach(function (el) { el.classList.add('is-in'); });
+        reveals.forEach(function (element) { element.classList.add('is-visible'); });
       }
 
-      var track = document.getElementById('method-track');
-      var bar = document.getElementById('method-progress-bar');
-      var prevBtn = document.getElementById('method-prev');
-      var nextBtn = document.getElementById('method-next');
+      function updateProgress() {
+        if (!track || !progress) return;
+        var max = track.scrollWidth - track.clientWidth;
+        var ratio = max > 0 ? track.scrollLeft / max : 1;
+        progress.style.transform = 'scaleX(' + Math.max(0.12, ratio) + ')';
+        if (previous) previous.disabled = track.scrollLeft <= 2;
+        if (next) next.disabled = track.scrollLeft >= max - 2;
+      }
 
-      function methodStepWidth() {
+      function cardStep() {
         if (!track) return 0;
-        var step = track.querySelector('.method-step');
-        if (!step) return track.clientWidth * 0.8;
-        var style = window.getComputedStyle(step);
-        var margin = parseFloat(style.marginRight) || 0;
-        return step.getBoundingClientRect().width + margin;
+        var card = track.querySelector('.facility-card');
+        var styles = window.getComputedStyle(track);
+        var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+        return card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
       }
 
-      function methodMaxScroll() {
-        return Math.max(0, track.scrollWidth - track.clientWidth);
-      }
-
-      function scrollMethodBy(delta) {
-        var max = methodMaxScroll();
-        var next = Math.min(max, Math.max(0, track.scrollLeft + delta));
-        track.scrollTo({ left: next, behavior: 'smooth' });
-      }
-
-      function updateMethodProgress() {
-        if (!track || !bar) return;
-        var max = methodMaxScroll();
-        var pct = max > 0 ? (track.scrollLeft / max) * 100 : 0;
-        bar.style.width = pct + '%';
+      function scrollFacility(direction) {
+        if (track) track.scrollBy({ left: direction * cardStep(), behavior: 'smooth' });
       }
 
       if (track) {
-        track.addEventListener('scroll', updateMethodProgress, { passive: true });
-        updateMethodProgress();
-
-        track.addEventListener('wheel', function (e) {
-          var max = methodMaxScroll();
-          if (max <= 0) return;
-          var delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-          if (!delta) return;
-          var next = track.scrollLeft + delta;
-          var atStart = track.scrollLeft <= 0 && delta < 0;
-          var atEnd = track.scrollLeft >= max - 1 && delta > 0;
-          if (atStart || atEnd) return;
-          e.preventDefault();
-          track.scrollLeft = Math.min(max, Math.max(0, next));
-        }, { passive: false });
-
-        if (prevBtn) {
-          prevBtn.addEventListener('click', function () {
-            scrollMethodBy(-methodStepWidth());
-          });
-        }
-        if (nextBtn) {
-          nextBtn.addEventListener('click', function () {
-            scrollMethodBy(methodStepWidth());
-          });
-        }
+        track.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress);
+        if (previous) previous.addEventListener('click', function () { scrollFacility(-1); });
+        if (next) next.addEventListener('click', function () { scrollFacility(1); });
+        track.addEventListener('keydown', function (event) {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            scrollFacility(event.key === 'ArrowLeft' ? -1 : 1);
+          }
+        });
+        updateProgress();
       }
     })();
   </script>
