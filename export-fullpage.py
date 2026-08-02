@@ -2,7 +2,7 @@
 """
 Full-page website capture — one continuous high-res PNG per active design.
 
-Starts local servers for designs A–I, captures, then stops them.
+Starts local servers for designs A–E, captures, then stops them.
 """
 
 from __future__ import annotations
@@ -35,10 +35,6 @@ DESIGNS = [
     ("design-c", 8082, "Epsilon-Clinic-Design-C"),
     ("design-d", 8083, "Epsilon-Clinic-Design-D"),
     ("design-e", 8084, "Epsilon-Clinic-Design-E"),
-    ("design-f", 8085, "Epsilon-Clinic-Design-F"),
-    ("design-g", 8086, "Epsilon-Clinic-Design-G"),
-    ("design-h", 8087, "Epsilon-Clinic-Design-H"),
-    ("design-i", 8088, "Epsilon-Clinic-Design-I"),
 ]
 
 

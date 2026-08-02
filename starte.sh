@@ -14,7 +14,7 @@ if pids=$(lsof -ti tcp:"$PORT" 2>/dev/null); then
   sleep 0.3
 fi
 
-echo "Starting Epsilon Clinic Design E at ${URL}"
+echo "Starting Epsilon Health Design E at ${URL}"
 python3 -m http.server "$PORT" &
 SERVER_PID=$!
 

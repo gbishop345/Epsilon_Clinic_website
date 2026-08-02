@@ -28,7 +28,7 @@ cleanup() {
 trap cleanup INT TERM
 
 sleep 0.4
-open "$URL"
+open -a Safari "$URL"
 
 echo "Server running (Design B). Press Ctrl+C to stop."
 wait "$SERVER_PID"
