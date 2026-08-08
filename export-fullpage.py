@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Full-page website capture — one continuous high-res PNG per active design.
+Full-page website capture — one continuous high-res PNG of the site.
 
-Starts local servers for designs A–E, captures, then stops them.
+Starts a local server, captures, then stops it.
 """
 
 from __future__ import annotations
@@ -30,11 +30,7 @@ SCALE = 2
 MAX_DEVICE_PX = 15000
 
 DESIGNS = [
-    ("design-a", 8080, "Epsilon-Clinic-Design-A"),
-    ("design-b", 8081, "Epsilon-Clinic-Design-B"),
-    ("design-c", 8082, "Epsilon-Clinic-Design-C"),
-    ("design-d", 8083, "Epsilon-Clinic-Design-D"),
-    ("design-e", 8084, "Epsilon-Clinic-Design-E"),
+    ("website", 8085, "Epsilon-Clinic-website"),
 ]
 
 
