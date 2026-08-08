@@ -13,7 +13,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <link rel="stylesheet" href="styles.css?v=ios-native-status-20260808-v2" />
+  <link rel="stylesheet" href="styles.css?v=ios-locked-chrome-20260808" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -356,10 +356,15 @@
       function dismissMobileNavOnScroll() {
         if (window.innerWidth <= PHONE_MAX && nav.classList.contains('is-open')) closeNav();
       }
-      window.addEventListener('scroll', function () {
-        header.classList.toggle('is-scrolled', window.scrollY > 24);
+      function mobilePageScrollTop() {
+        return window.innerWidth <= PHONE_MAX && pageScale ? pageScale.scrollTop : window.scrollY;
+      }
+      function updateHeaderOnScroll() {
+        header.classList.toggle('is-scrolled', mobilePageScrollTop() > 24);
         dismissMobileNavOnScroll();
-      }, { passive: true });
+      }
+      window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+      if (pageScale) pageScale.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
       document.addEventListener('touchmove', dismissMobileNavOnScroll, { passive: true });
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && !reduceMotion) {
