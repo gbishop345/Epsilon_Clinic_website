@@ -1,0 +1,14 @@
+{
+  "name": "epsilon-clinic-website",
+  "compatibility_date": "2026-08-07",
+  "assets": {
+    "directory": "."
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "epsilon-health-website",
+      "database_id": "4ac599a3-543d-4b98-99e2-dbb0cabfb35c"
+    }
+  ]
+}
