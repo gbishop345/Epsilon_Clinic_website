@@ -669,7 +669,10 @@ br + em { margin-left: 0; }
 .inquiry-form input:focus, .inquiry-form select:focus, .inquiry-form textarea:focus { border-color: var(--champagne-light); }
 .inquiry-form .button { width: 100%; margin-top: .5rem; }
 .inquiry-form .button:disabled { opacity: .5; }
-.form-note { margin-top: .8rem; color: rgba(248,245,239,.52); font-size: .65rem; text-align: center; }
+.form-note { min-height: 0; margin-top: .8rem; color: rgba(248,245,239,.72); font-size: .72rem; line-height: 1.45; text-align: center; }
+.form-note:not(:empty) { min-height: 2.8rem; padding: .8rem 1rem; border: 1px solid rgba(255,255,255,.15); border-radius: .5rem; }
+.form-note.is-success { color: #f8f5ef; border-color: rgba(205,225,198,.4); background: rgba(83,112,75,.28); }
+.form-note.is-error { color: #f8f5ef; border-color: rgba(232,184,169,.42); background: rgba(135,65,48,.28); }
 
 .site-footer { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin-top: -1px; padding: 5rem var(--gutter) 1.5rem; background: var(--porcelain); }
 .logo--footer { color: var(--ink); }
