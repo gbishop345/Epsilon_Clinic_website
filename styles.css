@@ -724,7 +724,7 @@ br + em { margin-left: 0; }
     --radius-xl: 2rem;
     --radius-lg: 1.25rem;
     --design-hero-height: 100svh;
-    --mobile-safe-top: max(env(safe-area-inset-top), .75rem);
+    --mobile-safe-top: max(env(safe-area-inset-top), 3.25rem);
   }
 
   .site-header {
