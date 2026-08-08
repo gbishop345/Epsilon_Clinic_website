@@ -152,7 +152,7 @@
       }
       row.appendChild(contact);
 
-      var interest = createCell("Interest", "");
+      var interest = createCell("Interest", "interest-cell");
       interest.appendChild(createElement("span", "interest", signup.interested_in || "Not specified"));
       row.appendChild(interest);
 
@@ -175,7 +175,7 @@
       if (formatted.time) submitted.appendChild(createElement("span", "", formatted.time));
       row.appendChild(submitted);
 
-      var status = createCell("Status", "");
+      var status = createCell("Status", "status-cell");
       status.appendChild(createStatusSelect(signup));
       row.appendChild(status);
 

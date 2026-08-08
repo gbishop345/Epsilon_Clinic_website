@@ -89,6 +89,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .header-cta { justify-self: end; padding-bottom: .35rem; border-bottom: 1px solid currentColor; font-family: var(--mono); font-size: .72rem; font-weight: 500; letter-spacing: .065em; text-transform: uppercase; }
 .nav-toggle { display: none; }
 .nav-scrim { display: none; }
+.pull-refresh { display: none; }
 
 /* Fixed height in design space; whole page scales uniformly via #page-scale. */
 .hero {
@@ -693,6 +694,8 @@ br + em { margin-left: 0; }
   .inquiry-form { background: #30332f; }
 }
 
+@keyframes pull-refresh-spin { to { transform: rotate(360deg); } }
+
 /*
   Layout modes (strictly separate):
   - Desktop only: @media (min-width: 481px) — 1440 freeze + scale (see top of file)
@@ -733,6 +736,55 @@ br + em { margin-left: 0; }
     margin: 0 !important;
   }
   body.nav-open #page-scale { overflow-y: hidden; }
+  #page-scale > main {
+    transform: translateY(var(--pull-distance, 0px));
+    transition: transform .22s var(--ease);
+  }
+  #page-scale.is-pulling > main { transition: none; }
+  .pull-refresh {
+    position: fixed;
+    z-index: 90;
+    top: 3.65rem;
+    left: 50%;
+    display: flex;
+    min-height: 2.25rem;
+    align-items: center;
+    gap: .45rem;
+    padding: .4rem .75rem;
+    color: var(--ink);
+    border: 1px solid rgba(38,40,36,.12);
+    border-radius: 999px;
+    background: rgba(238,232,221,.94);
+    box-shadow: 0 .35rem 1rem rgba(20,22,20,.12);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -1rem) scale(.94);
+    transition: opacity .18s, transform .18s var(--ease);
+  }
+  #page-scale.is-pulling .pull-refresh,
+  #page-scale.is-refreshing .pull-refresh {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  .pull-refresh-icon {
+    display: inline-grid;
+    width: 1.15rem;
+    height: 1.15rem;
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform .18s var(--ease);
+    place-items: center;
+  }
+  .pull-refresh.is-ready .pull-refresh-icon { transform: rotate(180deg); }
+  .pull-refresh.is-loading .pull-refresh-icon { animation: pull-refresh-spin .7s linear infinite; }
+  .pull-refresh small {
+    font-family: var(--mono);
+    font-size: .62rem;
+    font-weight: 500;
+    letter-spacing: .055em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
   .site-header {
     position: fixed;
     width: 100%;

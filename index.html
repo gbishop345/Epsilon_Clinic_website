@@ -13,7 +13,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <link rel="stylesheet" href="styles.css?v=ios-transparent-top-20260808" />
+  <link rel="stylesheet" href="styles.css?v=ios-pull-refresh-20260808" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -28,6 +28,7 @@
     <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false"><span></span><span></span></button>
   </header>
   <div class="page-scale" id="page-scale">
+  <div class="pull-refresh" id="pull-refresh" aria-hidden="true"><span class="pull-refresh-icon">&#8635;</span><small>Pull to refresh</small></div>
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
@@ -281,6 +282,7 @@
       var PHONE_MAX = 480;
       var pageScale = document.getElementById('page-scale');
       var header = document.getElementById('site-header');
+      var pullRefresh = document.getElementById('pull-refresh');
       function clearHeaderScale() {
         if (!header) return;
         header.style.width = '';
@@ -366,6 +368,59 @@
       window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
       if (pageScale) pageScale.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
       document.addEventListener('touchmove', dismissMobileNavOnScroll, { passive: true });
+
+      /* Native pull-to-refresh only watches document scrolling. The phone layout
+         uses its own stable scroller to avoid Safari's Dynamic Island jump, so
+         provide the same gesture on that scroller without moving browser chrome. */
+      if (pageScale && pullRefresh) {
+        var pullStartY = 0;
+        var pullDistance = 0;
+        var pullActive = false;
+        var pullThreshold = 56;
+        var pullLabel = pullRefresh.querySelector('small');
+        function resetPullRefresh() {
+          pullActive = false;
+          pullDistance = 0;
+          pageScale.style.setProperty('--pull-distance', '0px');
+          pageScale.classList.remove('is-pulling');
+          pullRefresh.classList.remove('is-ready');
+          if (pullLabel) pullLabel.textContent = 'Pull to refresh';
+        }
+        pageScale.addEventListener('touchstart', function (event) {
+          if (window.innerWidth > PHONE_MAX || pageScale.scrollTop > 0 || document.body.classList.contains('nav-open') || event.touches.length !== 1) return;
+          pullStartY = event.touches[0].clientY;
+          pullActive = true;
+        }, { passive: true });
+        pageScale.addEventListener('touchmove', function (event) {
+          if (!pullActive || event.touches.length !== 1) return;
+          var delta = event.touches[0].clientY - pullStartY;
+          if (delta <= 0 || pageScale.scrollTop > 0) {
+            resetPullRefresh();
+            return;
+          }
+          event.preventDefault();
+          pullDistance = Math.min(96, delta * .7);
+          pageScale.style.setProperty('--pull-distance', pullDistance + 'px');
+          pageScale.classList.add('is-pulling');
+          pullRefresh.classList.toggle('is-ready', pullDistance >= pullThreshold);
+          if (pullLabel) pullLabel.textContent = pullDistance >= pullThreshold ? 'Release to refresh' : 'Pull to refresh';
+        }, { passive: false });
+        pageScale.addEventListener('touchend', function () {
+          if (!pullActive) return;
+          if (pullDistance >= pullThreshold) {
+            pullActive = false;
+            pageScale.classList.remove('is-pulling');
+            pageScale.classList.add('is-refreshing');
+            pageScale.style.setProperty('--pull-distance', '3.5rem');
+            pullRefresh.classList.add('is-loading');
+            if (pullLabel) pullLabel.textContent = 'Refreshing';
+            window.setTimeout(function () { window.location.reload(); }, 180);
+            return;
+          }
+          resetPullRefresh();
+        }, { passive: true });
+        pageScale.addEventListener('touchcancel', resetPullRefresh, { passive: true });
+      }
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && !reduceMotion) {
         var observer = new IntersectionObserver(function (entries) { entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -7% 0px' });
