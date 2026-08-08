@@ -256,11 +256,11 @@
       <div class="inquiry-atmosphere" aria-hidden="true"><i></i><i></i><div class="inquiry-word">Epsilon</div></div>
       <div class="inquiry-copy reveal"><p class="eyebrow eyebrow--light">09 — Reserve your place at Epsilon. Become a founding member.</p><h2 id="inquiry-title">Choose DPC<br />or Premium for <em>you.</em></h2><p>Tell us what you are looking for. Our team can help you understand membership, program, and service options at our facility at 5111 Maryland Way in Brentwood.</p><p class="inquiry-limit">Total enrollment is limited.</p><div class="inquiry-meta"><span class="inquiry-meta-address">5111 Maryland Way · Brentwood, TN</span><span class="inquiry-meta-paths"><span>Epsilon DPC</span><span>Premium Concierge</span></span></div></div>
       <form class="inquiry-form glass reveal" id="inquiry-form">
-        <div class="field-row"><label>First name<input type="text" name="first-name" autocomplete="given-name" /></label><label>Last name<input type="text" name="last-name" autocomplete="family-name" /></label></div>
-        <div class="field-row"><label>Email address<input type="email" name="email" autocomplete="email" /></label><label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel" inputmode="tel" /></label></div>
-        <label>I’m interested in<select name="interest"><option value="">Select an option</option><option>Epsilon DPC</option><option>Premium Concierge</option><option>Longevity &amp; Anti-Aging</option><option>Executive Health Assessment</option><option>À-la-carte service</option></select></label>
+        <div class="field-row"><label>First name<input type="text" name="first-name" autocomplete="given-name" required /></label><label>Last name<input type="text" name="last-name" autocomplete="family-name" required /></label></div>
+        <div class="field-row"><label>Email address<input type="email" name="email" autocomplete="email" required /></label><label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel" inputmode="tel" /></label></div>
+        <label>I’m interested in<select name="interest" required><option value="">Select an option</option><option>Epsilon DPC</option><option>Premium Concierge</option><option>Longevity &amp; Anti-Aging</option><option>Executive Health Assessment</option><option>À-la-carte service</option></select></label>
         <label>How can we help?<textarea name="message" rows="2"></textarea></label>
-        <button class="button button--champagne" type="button" disabled>Send inquiry</button><p class="form-note">Online inquiry submission will be connected in a future phase.</p>
+        <button class="button button--champagne" type="submit">Send inquiry</button><p class="form-note" aria-live="polite"></p>
       </form>
     </section>
   </main>
@@ -396,6 +396,43 @@
       track.addEventListener('wheel', function (event) { if (Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey) startAutoScroll(); }, { passive: true });
       track.addEventListener('click', function () { if (draggedTrack) { draggedTrack = false; return; } stopAutoScroll(); });
       if (!reduceMotion) window.requestAnimationFrame(animateFacility);
+
+      var inquiryForm = document.getElementById('inquiry-form');
+      var inquiryButton = inquiryForm.querySelector('button[type="submit"]');
+      var inquiryNote = inquiryForm.querySelector('.form-note');
+      inquiryForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        inquiryButton.disabled = true;
+        inquiryNote.textContent = '';
+
+        var formData = new FormData(inquiryForm);
+        var submission = {
+          first_name: formData.get('first-name'),
+          last_name: formData.get('last-name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          interested_in: formData.get('interest'),
+          how_can_we_help: formData.get('message')
+        };
+
+        try {
+          var response = await fetch('/api/presignup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(submission)
+          });
+          var result = await response.json();
+
+          if (!response.ok || !result.success) throw new Error('Submission failed');
+
+          inquiryForm.reset();
+          inquiryNote.textContent = 'Thank you. Your inquiry has been received.';
+        } catch (error) {
+          inquiryNote.textContent = 'We couldn’t submit your inquiry. Please try again.';
+        } finally {
+          inquiryButton.disabled = false;
+        }
+      });
     })();
   </script>
 </body>
