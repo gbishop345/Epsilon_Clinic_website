@@ -730,6 +730,7 @@ br + em { margin-left: 0; }
     --radius-lg: 1.25rem;
     --design-hero-height: 100svh;
     --mobile-safe-top: env(safe-area-inset-top, 0px);
+    --mobile-status-cap-height: max(var(--mobile-safe-top), 4rem);
   }
 
   .site-header {
@@ -754,11 +755,12 @@ br + em { margin-left: 0; }
   .mobile-safe-area {
     position: absolute;
     z-index: 1;
-    top: 0;
+    top: auto;
     right: 0;
+    bottom: 100%;
     left: 0;
     display: block;
-    height: var(--mobile-safe-top);
+    height: var(--mobile-status-cap-height);
     background: var(--porcelain);
     pointer-events: none;
   }
