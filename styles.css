@@ -752,8 +752,8 @@ br + em { margin-left: 0; }
     -webkit-backdrop-filter: blur(18px) saturate(110%);
   }
   .mobile-safe-area {
-    position: fixed;
-    z-index: 101;
+    position: absolute;
+    z-index: 1;
     top: 0;
     right: 0;
     left: 0;
