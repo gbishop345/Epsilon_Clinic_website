@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Signup Dashboard | Epsilon Health</title>
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body>
+  <a class="skip-link" href="#signup-table">Skip to signups</a>
+
+  <header class="admin-header">
+    <a class="brand" href="/" aria-label="Epsilon Health home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>EPSILON <strong>HEALTH</strong></span>
+    </a>
+    <div class="account">
+      <span class="access-pill"><i aria-hidden="true"></i>Access protected</span>
+      <span id="admin-email" class="admin-email">Loading account…</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Private administration</p>
+        <h1 id="page-title">Pre-signup inquiries</h1>
+        <p class="intro-copy">Review new interest and keep each inquiry moving toward care.</p>
+      </div>
+      <button class="refresh-button" id="refresh-button" type="button">
+        <span aria-hidden="true">↻</span> Refresh
+      </button>
+    </section>
+
+    <section class="summary-grid" aria-label="Signup summary">
+      <article class="summary-card summary-card--primary">
+        <p>Total signups</p>
+        <strong id="total-count">—</strong>
+        <span>All submissions</span>
+      </article>
+      <article class="summary-card">
+        <p>New</p>
+        <strong id="new-count">—</strong>
+        <span>Awaiting contact</span>
+      </article>
+      <article class="summary-card">
+        <p>Contacted</p>
+        <strong id="contacted-count">—</strong>
+        <span>Conversation started</span>
+      </article>
+      <article class="summary-card">
+        <p>Scheduled</p>
+        <strong id="scheduled-count">—</strong>
+        <span>Next step booked</span>
+      </article>
+    </section>
+
+    <section class="workspace" aria-labelledby="table-title">
+      <div class="workspace-heading">
+        <div>
+          <p class="eyebrow">Inquiry pipeline</p>
+          <h2 id="table-title">All submissions</h2>
+        </div>
+        <p id="result-count" class="result-count" aria-live="polite">Loading signups…</p>
+      </div>
+
+      <form class="filters" id="filters" role="search">
+        <label class="search-field">
+          <span class="visually-hidden">Search signups</span>
+          <span class="search-icon" aria-hidden="true"></span>
+          <input id="search-input" type="search" name="q" placeholder="Search name, email, phone, interest…" autocomplete="off" />
+        </label>
+        <label>
+          <span class="visually-hidden">Filter by status</span>
+          <select id="status-filter" name="status">
+            <option value="all">All statuses</option>
+            <option value="new">New</option>
+            <option value="contacted">Contacted</option>
+            <option value="scheduled">Scheduled</option>
+            <option value="closed">Closed</option>
+          </select>
+        </label>
+        <label>
+          <span class="visually-hidden">Sort submissions</span>
+          <select id="sort-filter" name="sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+          </select>
+        </label>
+      </form>
+
+      <div class="notice notice--error" id="error-notice" role="alert" hidden>
+        <div><strong>We couldn’t load the signups.</strong><p id="error-message">Please try again.</p></div>
+        <button id="retry-button" type="button">Try again</button>
+      </div>
+
+      <div class="table-wrap" id="table-wrap" aria-busy="true">
+        <table id="signup-table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Interest</th>
+              <th scope="col">Message</th>
+              <th scope="col">Submitted</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody id="signup-rows"></tbody>
+        </table>
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">ε</span>
+          <h3>No signups found</h3>
+          <p>Try clearing your search or choosing another status.</p>
+          <button id="clear-filters" type="button">Clear filters</button>
+        </div>
+      </div>
+
+      <nav class="pagination" aria-label="Signup pages">
+        <p id="page-summary">Page 1 of 1</p>
+        <div>
+          <button id="previous-page" type="button" disabled>Previous</button>
+          <button id="next-page" type="button" disabled>Next</button>
+        </div>
+      </nav>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/admin/admin.js" defer></script>
+</body>
+</html>
