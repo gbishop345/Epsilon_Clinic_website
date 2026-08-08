@@ -352,7 +352,14 @@
         if (nav.contains(event.target) || toggle.contains(event.target)) return;
         closeNav();
       });
-      window.addEventListener('scroll', function () { header.classList.toggle('is-scrolled', window.scrollY > 24); }, { passive: true });
+      function dismissMobileNavOnScroll() {
+        if (window.innerWidth <= PHONE_MAX && nav.classList.contains('is-open')) closeNav();
+      }
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('is-scrolled', window.scrollY > 24);
+        dismissMobileNavOnScroll();
+      }, { passive: true });
+      document.addEventListener('touchmove', dismissMobileNavOnScroll, { passive: true });
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && !reduceMotion) {
         var observer = new IntersectionObserver(function (entries) { entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -7% 0px' });
