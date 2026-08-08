@@ -726,8 +726,22 @@ br + em { margin-left: 0; }
     --design-hero-height: 100svh;
   }
 
-  .site-header { grid-template-columns: 1fr auto; min-height: 3.35rem; padding: 0 var(--gutter); }
-  .site-header.is-scrolled { min-height: 3.35rem; }
+  .site-header {
+    grid-template-columns: 1fr auto;
+    min-height: calc(3.35rem + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) max(var(--gutter), env(safe-area-inset-right)) 0 max(var(--gutter), env(safe-area-inset-left));
+  }
+  .site-header::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: env(safe-area-inset-top);
+    background: var(--linen);
+    content: "";
+    pointer-events: none;
+  }
+  .site-header.is-scrolled { min-height: calc(3.35rem + env(safe-area-inset-top)); }
   /* Compact dropdown menu (not full-screen drawer) */
   .nav-scrim {
     display: block;
@@ -747,8 +761,8 @@ br + em { margin-left: 0; }
   }
   .main-nav {
     position: fixed;
-    top: 3.55rem;
-    right: var(--gutter);
+    top: calc(3.55rem + env(safe-area-inset-top));
+    right: max(var(--gutter), env(safe-area-inset-right));
     left: auto;
     display: flex;
     width: min(13.5rem, calc(100vw - 2.5rem));
@@ -832,7 +846,7 @@ br + em { margin-left: 0; }
     min-height: 100svh;
     min-height: 100dvh;
     height: auto;
-    padding: 4.85rem var(--gutter) .85rem;
+    padding: calc(4.85rem + env(safe-area-inset-top)) max(var(--gutter), env(safe-area-inset-right)) .85rem max(var(--gutter), env(safe-area-inset-left));
     overflow: hidden;
     background: #191b19;
   }
