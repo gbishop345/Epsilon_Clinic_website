@@ -25,6 +25,7 @@
     empty: document.getElementById("empty-state"),
     error: document.getElementById("error-notice"),
     errorMessage: document.getElementById("error-message"),
+    filters: document.getElementById("filters"),
     search: document.getElementById("search-input"),
     status: document.getElementById("status-filter"),
     sort: document.getElementById("sort-filter"),
@@ -177,7 +178,8 @@
   async function loadSignups(options) {
     options = options || {};
     if (state.controller) state.controller.abort();
-    state.controller = new AbortController();
+    var controller = new AbortController();
+    state.controller = controller;
     setLoading(true);
     elements.error.hidden = true;
 
@@ -193,7 +195,7 @@
       var response = await fetch("/api/admin/presignups?" + params.toString(), {
         credentials: "same-origin",
         headers: { Accept: "application/json" },
-        signal: state.controller.signal
+        signal: controller.signal
       });
       var body = await response.json().catch(function () { return {}; });
 
@@ -212,7 +214,7 @@
       elements.errorMessage.textContent = error.message || "Please try again.";
       elements.error.hidden = false;
     } finally {
-      setLoading(false);
+      if (state.controller === controller) setLoading(false);
     }
   }
 
@@ -239,6 +241,7 @@
       select.dataset.status = nextStatus;
       showToast("Status updated to " + titleCase(nextStatus) + ".");
       await loadSignups();
+      select.disabled = false;
     } catch (error) {
       select.value = previousStatus;
       select.dataset.status = previousStatus;
@@ -248,6 +251,14 @@
   }
 
   var searchTimer;
+  elements.filters.addEventListener("submit", function (event) {
+    event.preventDefault();
+    window.clearTimeout(searchTimer);
+    state.query = elements.search.value.trim();
+    state.page = 1;
+    loadSignups();
+  });
+
   elements.search.addEventListener("input", function () {
     window.clearTimeout(searchTimer);
     searchTimer = window.setTimeout(function () {
