@@ -267,6 +267,7 @@ tbody tr.is-selected { background: rgba(183,153,112,.1); }
 
 @media (max-width: 480px) {
   .brand { letter-spacing: .11em; }
+  .refresh-button { display: none; }
   main { padding-bottom: 3rem; }
   h1 { font-size: 2.35rem; }
   .intro-copy { font-size: .88rem; }

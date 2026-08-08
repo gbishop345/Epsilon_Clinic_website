@@ -66,6 +66,25 @@
     };
   }
 
+  function formatPhone(value) {
+    var source = String(value || "").trim();
+    var digits = source.replace(/\D/g, "");
+
+    if (digits.length === 10) {
+      return digits.slice(0, 3) + "-" + digits.slice(3, 6) + "-" + digits.slice(6);
+    }
+
+    if (digits.length === 11 && digits.charAt(0) === "1") {
+      return "1-" + digits.slice(1, 4) + "-" + digits.slice(4, 7) + "-" + digits.slice(7);
+    }
+
+    if (digits.length === 7) {
+      return digits.slice(0, 3) + "-" + digits.slice(3);
+    }
+
+    return source;
+  }
+
   function createElement(tag, className, text) {
     var node = document.createElement(tag);
     if (className) node.className = className;
@@ -144,8 +163,8 @@
       if (signup.email) email.href = "mailto:" + signup.email;
       contact.appendChild(email);
       if (signup.phone) {
-        var phone = createElement("a", "", signup.phone);
-        phone.href = "tel:" + signup.phone.replace(/[^+\d]/g, "");
+        var phone = createElement("a", "", formatPhone(signup.phone));
+        phone.href = "tel:" + String(signup.phone).replace(/[^+\d]/g, "");
         contact.appendChild(phone);
       } else {
         contact.appendChild(createElement("span", "", "No phone"));

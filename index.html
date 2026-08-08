@@ -13,7 +13,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <link rel="stylesheet" href="styles.css?v=ios-pull-refresh-20260808" />
+  <link rel="stylesheet" href="styles.css?v=compact-form-phone-format-20260808" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -259,7 +259,7 @@
       <div class="inquiry-copy reveal"><p class="eyebrow eyebrow--light">09 — Reserve your place at Epsilon. Become a founding member.</p><h2 id="inquiry-title">Choose DPC<br />or Premium for <em>you.</em></h2><p>Tell us what you are looking for. Our team can help you understand membership, program, and service options at our facility at 5111 Maryland Way in Brentwood.</p><p class="inquiry-limit">Total enrollment is limited.</p><div class="inquiry-meta"><span class="inquiry-meta-address">5111 Maryland Way · Brentwood, TN</span><span class="inquiry-meta-paths"><span>Epsilon DPC</span><span>Premium Concierge</span></span></div></div>
       <form class="inquiry-form glass reveal" id="inquiry-form">
         <div class="field-row"><label>First name<input type="text" name="first-name" autocomplete="given-name" required /></label><label>Last name<input type="text" name="last-name" autocomplete="family-name" required /></label></div>
-        <div class="field-row"><label>Email address<input type="email" name="email" autocomplete="email" required /></label><label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel" inputmode="tel" /></label></div>
+        <div class="field-row"><label>Email address<input type="email" name="email" autocomplete="email" required /></label><label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel-national" inputmode="numeric" maxlength="12" placeholder="615-555-1234" /></label></div>
         <label>I’m interested in<select name="interest" required><option value="" selected disabled hidden>Select an option</option><option>Epsilon DPC Membership</option><option>Premium Membership</option><option>Next Level Concierge</option><option>Executive Health Assessment</option><option>Advanced Services</option><option>Recovery Assets</option><option>Not sure</option></select></label>
         <label>How can we help?<textarea name="message" rows="2"></textarea></label>
         <button class="button button--champagne" type="submit">Send inquiry</button><p class="form-note" aria-live="polite"></p>
@@ -468,6 +468,19 @@
       var inquiryForm = document.getElementById('inquiry-form');
       var inquiryButton = inquiryForm.querySelector('button[type="submit"]');
       var inquiryNote = inquiryForm.querySelector('.form-note');
+      var phoneInput = inquiryForm.querySelector('input[name="phone"]');
+      function formatPhoneNumber(value) {
+        var digits = value.replace(/\D/g, '').slice(0, 10);
+        if (digits.length <= 3) return digits;
+        if (digits.length <= 6) return digits.slice(0, 3) + '-' + digits.slice(3);
+        return digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6);
+      }
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+          var formatted = formatPhoneNumber(phoneInput.value);
+          if (phoneInput.value !== formatted) phoneInput.value = formatted;
+        });
+      }
       inquiryForm.addEventListener('submit', async function (event) {
         event.preventDefault();
         inquiryButton.disabled = true;
