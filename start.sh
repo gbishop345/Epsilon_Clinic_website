@@ -2,7 +2,7 @@
 set -e
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DIR="$ROOT/website"
+DIR="$ROOT"
 PORT=8085
 URL="http://localhost:${PORT}"
 

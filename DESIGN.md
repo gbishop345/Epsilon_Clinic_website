@@ -185,7 +185,7 @@ Photography should make the clinic feel established, tangible, and premium.
 
 ### Treatment
 
-- Use real clinic images from `website/assets`
+- Use real clinic images from `assets`
 - Favor architectural views, warm lighting, curved forms, and uncluttered rooms
 - Apply restrained saturation and contrast through CSS
 - Use gradients for text legibility without obscuring the interiors

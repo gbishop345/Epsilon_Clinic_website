@@ -2,7 +2,7 @@
 set -e
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DIR="$ROOT/website"
+DIR="$ROOT"
 PORT=8086
 URL="http://localhost:${PORT}/?nocache=$(date +%s)"
 # CSS phone layout is max-width: 480px; size Safari for a phone-like viewport.

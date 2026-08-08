@@ -30,7 +30,7 @@ SCALE = 2
 MAX_DEVICE_PX = 15000
 
 DESIGNS = [
-    ("website", 8085, "Epsilon-Clinic-website"),
+    (".", 8085, "Epsilon-Clinic-website"),
 ]
 
 
