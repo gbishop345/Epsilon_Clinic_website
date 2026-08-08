@@ -1,8 +1,13 @@
 {
   "name": "epsilon-clinic-website",
   "compatibility_date": "2026-08-07",
+  "main": "src/index.js",
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
   },
   "d1_databases": [
     {
