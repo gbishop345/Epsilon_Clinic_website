@@ -8,6 +8,7 @@
     page: 1,
     pageSize: 25,
     pageCount: 1,
+    selectedIds: new Set(),
     controller: null,
     toastTimer: null
   };
@@ -25,6 +26,14 @@
     empty: document.getElementById("empty-state"),
     error: document.getElementById("error-notice"),
     errorMessage: document.getElementById("error-message"),
+    selectionToolbar: document.getElementById("selection-toolbar"),
+    selectedCount: document.getElementById("selected-count"),
+    deleteSelected: document.getElementById("delete-selected"),
+    selectAll: document.getElementById("select-all"),
+    deleteDialog: document.getElementById("delete-dialog"),
+    deleteDialogMessage: document.getElementById("delete-dialog-message"),
+    cancelDelete: document.getElementById("cancel-delete"),
+    confirmDelete: document.getElementById("confirm-delete"),
     filters: document.getElementById("filters"),
     search: document.getElementById("search-input"),
     status: document.getElementById("status-filter"),
@@ -89,11 +98,41 @@
     return select;
   }
 
+  function updateSelection() {
+    var checkboxes = Array.from(elements.rows.querySelectorAll(".row-checkbox"));
+    var selectedCount = state.selectedIds.size;
+    var allSelected = checkboxes.length > 0 && checkboxes.every(function (checkbox) { return checkbox.checked; });
+
+    elements.selectionToolbar.hidden = selectedCount === 0;
+    elements.selectedCount.textContent = selectedCount + " selected";
+    elements.deleteSelected.textContent = "Delete selected (" + selectedCount + ")";
+    elements.selectAll.checked = allSelected;
+    elements.selectAll.indeterminate = !allSelected && checkboxes.some(function (checkbox) { return checkbox.checked; });
+  }
+
   function renderRows(signups) {
+    state.selectedIds.clear();
     elements.rows.replaceChildren();
 
     signups.forEach(function (signup) {
       var row = document.createElement("tr");
+      var signupId = Number(signup.id);
+
+      var selection = createCell("Select", "selection-cell");
+      var selectionLabel = createElement("label", "checkbox-label");
+      var checkbox = createElement("input", "row-checkbox");
+      checkbox.type = "checkbox";
+      checkbox.value = String(signup.id);
+      checkbox.setAttribute("aria-label", "Select " + signup.first_name + " " + signup.last_name);
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) state.selectedIds.add(signupId);
+        else state.selectedIds.delete(signupId);
+        row.classList.toggle("is-selected", checkbox.checked);
+        updateSelection();
+      });
+      selectionLabel.appendChild(checkbox);
+      selection.appendChild(selectionLabel);
+      row.appendChild(selection);
 
       var name = createCell("Name", "name-cell");
       name.appendChild(createElement("strong", "", (signup.first_name + " " + signup.last_name).trim() || "Unnamed"));
@@ -142,6 +181,8 @@
 
       elements.rows.appendChild(row);
     });
+
+    updateSelection();
   }
 
   function showToast(message, isError) {
@@ -250,6 +291,56 @@
     }
   }
 
+  function openDeleteDialog() {
+    var count = state.selectedIds.size;
+    if (!count) return;
+
+    elements.deleteDialogMessage.textContent = "You’re about to permanently delete " + count +
+      (count === 1 ? " signup" : " signups") + " from the database. This action cannot be undone.";
+    elements.confirmDelete.textContent = count === 1 ? "Delete signup" : "Delete " + count + " signups";
+    elements.deleteDialog.showModal();
+  }
+
+  async function confirmDelete() {
+    var ids = Array.from(state.selectedIds);
+    if (!ids.length) {
+      elements.deleteDialog.close();
+      return;
+    }
+
+    elements.confirmDelete.disabled = true;
+    elements.cancelDelete.disabled = true;
+    elements.confirmDelete.textContent = "Deleting…";
+
+    try {
+      var response = await fetch("/api/admin/presignups", {
+        method: "DELETE",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "epsilon-admin"
+        },
+        body: JSON.stringify({ ids: ids })
+      });
+      var body = await response.json().catch(function () { return {}; });
+
+      if (!response.ok || !body.success) {
+        throw new Error(body.error || "The selected signups could not be deleted.");
+      }
+
+      elements.deleteDialog.close();
+      state.selectedIds.clear();
+      showToast(body.deleted + (body.deleted === 1 ? " signup deleted." : " signups deleted."));
+      await loadSignups();
+    } catch (error) {
+      showToast(error.message || "The selected signups could not be deleted.", true);
+    } finally {
+      elements.confirmDelete.disabled = false;
+      elements.cancelDelete.disabled = false;
+      elements.confirmDelete.textContent = "Delete signups";
+    }
+  }
+
   var searchTimer;
   elements.filters.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -279,6 +370,21 @@
     state.page = 1;
     loadSignups();
   });
+
+  elements.selectAll.addEventListener("change", function () {
+    elements.rows.querySelectorAll(".row-checkbox").forEach(function (checkbox) {
+      checkbox.checked = elements.selectAll.checked;
+      var id = Number(checkbox.value);
+      if (checkbox.checked) state.selectedIds.add(id);
+      else state.selectedIds.delete(id);
+      checkbox.closest("tr").classList.toggle("is-selected", checkbox.checked);
+    });
+    updateSelection();
+  });
+
+  elements.deleteSelected.addEventListener("click", openDeleteDialog);
+  elements.cancelDelete.addEventListener("click", function () { elements.deleteDialog.close(); });
+  elements.confirmDelete.addEventListener("click", confirmDelete);
 
   elements.refresh.addEventListener("click", function () { loadSignups({ announce: true }); });
   elements.retry.addEventListener("click", function () { loadSignups(); });

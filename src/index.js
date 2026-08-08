@@ -173,15 +173,55 @@ async function updatePresignupStatus(request, env, url, id) {
   return json({ success: true, presignup: { id, status } });
 }
 
+async function deletePresignups(request, env, url) {
+  if (!isSameOriginWrite(request, url)) {
+    return json({ success: false, error: "Cross-origin request denied" }, { status: 403 });
+  }
+
+  if (!env.DB) {
+    return json({ success: false, error: "Database binding is unavailable" }, { status: 503 });
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ success: false, error: "A JSON request body is required" }, { status: 400 });
+  }
+
+  if (!body || !Array.isArray(body.ids) || body.ids.length === 0 || body.ids.length > MAX_PAGE_SIZE) {
+    return json(
+      { success: false, error: `Select between 1 and ${MAX_PAGE_SIZE} signups to delete` },
+      { status: 400 }
+    );
+  }
+
+  const ids = [...new Set(body.ids.map(Number))];
+  if (ids.some((id) => !Number.isSafeInteger(id) || id <= 0)) {
+    return json({ success: false, error: "Every signup ID must be a positive integer" }, { status: 400 });
+  }
+
+  const placeholders = ids.map(() => "?").join(", ");
+  const result = await env.DB.prepare(`DELETE FROM presignups WHERE id IN (${placeholders})`)
+    .bind(...ids)
+    .run();
+
+  return json({ success: true, deleted: result.meta?.changes || 0 });
+}
+
 async function handleAdminApi(request, env, url, identity) {
   if (url.pathname === "/api/admin/presignups") {
     if (request.method === "GET") {
       return listPresignups(env, url, identity);
     }
 
+    if (request.method === "DELETE") {
+      return deletePresignups(request, env, url);
+    }
+
     return json(
       { success: false, error: "Method not allowed" },
-      { status: 405, headers: { Allow: "GET" } }
+      { status: 405, headers: { Allow: "GET, DELETE" } }
     );
   }
 

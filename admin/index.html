@@ -90,6 +90,11 @@
         </label>
       </form>
 
+      <div class="selection-toolbar" id="selection-toolbar" hidden>
+        <p><strong id="selected-count">0 selected</strong><span>Selected rows will be permanently removed.</span></p>
+        <button class="delete-button" id="delete-selected" type="button">Delete selected</button>
+      </div>
+
       <div class="notice notice--error" id="error-notice" role="alert" hidden>
         <div><strong>We couldn’t load the signups.</strong><p id="error-message">Please try again.</p></div>
         <button id="retry-button" type="button">Try again</button>
@@ -99,6 +104,12 @@
         <table id="signup-table">
           <thead>
             <tr>
+              <th class="selection-cell" scope="col">
+                <label>
+                  <span class="visually-hidden">Select all signups on this page</span>
+                  <input id="select-all" type="checkbox" />
+                </label>
+              </th>
               <th scope="col">Name</th>
               <th scope="col">Contact</th>
               <th scope="col">Interest</th>
@@ -126,6 +137,19 @@
       </nav>
     </section>
   </main>
+
+  <dialog class="confirm-dialog" id="delete-dialog" aria-labelledby="delete-dialog-title" aria-describedby="delete-dialog-message">
+    <div class="dialog-content">
+      <span class="dialog-mark" aria-hidden="true">!</span>
+      <p class="eyebrow">Permanent action</p>
+      <h2 id="delete-dialog-title">Delete selected signups?</h2>
+      <p id="delete-dialog-message">This action cannot be undone.</p>
+      <div class="dialog-actions">
+        <button id="cancel-delete" type="button">Cancel</button>
+        <button class="delete-button" id="confirm-delete" type="button">Delete signups</button>
+      </div>
+    </div>
+  </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
   <script src="/admin/admin.js" defer></script>
